@@ -52,7 +52,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
     expect(page).to have_button('Save')
 
     fill_in 'Title', with: 'Another glowing review'
-    fill_in 'Rating', with: '4'
+    select '4', from: :rating
     fill_in 'Content', with: 'Super dope'
     fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
     click_button 'Save'
