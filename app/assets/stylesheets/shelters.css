@@ -1,3 +1,8 @@
+.shelter {
+  text-align: center;
+  width: 100%;
+}
+
 .shelterIndexBlock {
   margin-bottom: 75px;
   text-align: center;
@@ -32,16 +37,10 @@
   margin: 3px;
 }
 
-.shelter {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .shelterActions {
   display: inline-block;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .createShelter {
@@ -49,4 +48,44 @@
   margin-right: auto;
   text-align: center;
   align-content: center;
+}
+
+.shelterShowContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.shelterInfoAttribute {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.shelterColumn1 {
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shelterColumn2 {
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviewsBlock{
+  margin-top: 25px;
+}
+
+.reviewTitle {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.reviewAttribute {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
