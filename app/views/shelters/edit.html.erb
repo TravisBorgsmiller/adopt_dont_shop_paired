@@ -5,30 +5,30 @@
 
       <div class="formField">
         <%= label_tag :name %>
-        <%= text_field_tag :name %>
+        <%= text_field_tag :name, @shelter.name %>
       </div>
 
       <div class="formField">
         <%= label_tag :address %>
-        <%= text_field_tag :address %>
+        <%= text_field_tag :address, @shelter.address %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
         <%= label_tag :city %>
-        <%= text_field_tag :city %>
-      <div class="formField"> 
+        <%= text_field_tag :city, @shelter.city %>
+      <div class="formField">
 
       <div class="formField">
         <%= label_tag :state %>
-        <%= text_field_tag :state %>
-      </div>
-      
-      <div class="formField"> 
-        <%= label_tag :zip %>
-        <%= text_field_tag :zip %>
+        <%= text_field_tag :state, @shelter.state %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
+        <%= label_tag :zip %>
+        <%= text_field_tag :zip, @shelter.zip %>
+      </div>
+
+      <div class="formField">
         <%= submit_tag 'Save' %>
       </div>
     <% end %>

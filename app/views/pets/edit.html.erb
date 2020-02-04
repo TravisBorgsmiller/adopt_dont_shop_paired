@@ -3,37 +3,37 @@
   <div class="formAlign">
     <%= form_tag "/pets/#{@pet.id}", method: :patch do %>
 
-      <div class="formField">    
+      <div class="formField">
         <%= label_tag :image %>
-        <%= text_field_tag :image %>
+        <%= text_field_tag :image, @pet.image %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
         <%= label_tag :name %>
-        <%= text_field_tag :name %>
+        <%= text_field_tag :name, @pet.name %>
       </div>
 
       <div class="formField">
         <%= label_tag :description %>
-        <%= text_field_tag :description %>
+        <%= text_field_tag :description, @pet.description %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
         <%= label_tag :age %>
-        <%= text_field_tag :age %>
+        <%= text_field_tag :age, @pet.age %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
         <%= label_tag :sex %>
-        <%= text_field_tag :sex %>
+        <%= text_field_tag :sex, @pet.sex %>
       </div>
 
       <div class="formField">
         <%= label_tag :status %>
-        <%= text_field_tag :status %>
+        <%= text_field_tag :status, @pet.status %>
       </div>
 
-      <div class="formField"> 
+      <div class="formField">
         <%= submit_tag 'Update Pet' %>
       </div>
     <% end %>
