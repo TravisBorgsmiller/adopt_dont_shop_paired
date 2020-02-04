@@ -16,4 +16,20 @@
   <div class="shelterActions">
     <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
   </div>
+  <div class="reviewsBlock">
+    <% @shelter.reviews.each do |review| %>
+      <div>
+        <%= review.title %>
+      </div>
+      <div>
+        Rating: <%= review.rating %>
+      </div>
+      <div>
+        <%= review.content %>
+      </div>
+      <div>
+        <%= image_tag "#{review.image}" %>
+      </div>
+    <% end %>
+  </div>
 </div>
