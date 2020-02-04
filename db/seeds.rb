@@ -48,6 +48,6 @@ shelter1.reviews.create(
 shelter2.reviews.create(
   title: "A stellar review",
   rating: "5",
-  content: "They throw a frisbee wtih my dog",
+  content: "They throw a frisbee with my dog",
   image: "https://i.imgur.com/dciDr8Q.jpg"
 )
