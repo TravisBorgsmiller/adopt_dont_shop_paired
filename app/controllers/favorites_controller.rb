@@ -1,5 +1,10 @@
 class FavoritesController < ApplicationController
   def index
+    pet_ids = @favorites.contents.keys
+    @pets = pet_ids.reduce([]) do |value, key|
+      value << Pet.find(key.to_i)
+      value
+    end
   end
 
   def update
