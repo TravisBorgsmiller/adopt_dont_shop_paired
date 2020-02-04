@@ -25,14 +25,14 @@ RSpec.describe 'As a visitor I can create a new shelter review' do
     click_link "Create new review for #{shelter1.name}"
     expect(current_path).to eq("/shelters/#{shelter1.id}/reviews/new")
 
-    fill_in :title, with 'Bomb Review'
-    fill_in :rating, with '5 stars'
-    fill_in :content, with 'Fabulous facilities'
-    fill_in :image, with ''
+    fill_in :title, with: 'Bomb Review'
+    select '5', from: :rating
+    fill_in :content, with: 'Fabulous facilities'
+    fill_in :image, with: ''
     click_button 'Submit'
 
     expect(current_path).to eq("/shelters/#{shelter1.id}")
     expect(page).to have_content('Bomb Review')
     expect(page).to have_content('Fabulous facilities')
   end
-end 
+end
