@@ -37,3 +37,17 @@ shelter2.pets.create(
   sex: 'male',
   status: 'adoptable'
 )
+
+shelter1.reviews.create(
+  title: "A glowing review",
+  rating: "5",
+  content: "Great facility, friendly staff!",
+  image: "https://i.imgur.com/dciDr8Q.jpg"
+)
+
+shelter2.reviews.create(
+  title: "A stellar review",
+  rating: "5",
+  content: "They throw a frisbee wtih my dog",
+  image: "https://i.imgur.com/dciDr8Q.jpg"
+)
