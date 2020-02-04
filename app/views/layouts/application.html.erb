@@ -12,13 +12,12 @@
   <body>
     <div class= "topnav">
       <div class="dropdown">
-        <%# <div class="dropbtn">Shelters</div> %>
-          <div class="dropdown-content">
-            <div class="dropdownLink"><%= link_to 'Home', '/', :class => 'menuLink' %></div>
-            <div class="dropdownLink"><%= link_to 'Shelters', '/shelters', :class => 'menuLink' %></div>
-            <div class="dropdownLink"><%= link_to 'Pets', '/pets', :class => 'menuLink' %></div>
-            <div class="menuLinkRight"><%= link_to 'New Shelter', '/shelters/new', :class => 'menuLink' %></div>
-          </div>
+        <div class="dropdown-content">
+          <div class="dropdownLink"><%= link_to 'Home', '/', :class => 'menuLink' %></div>
+          <div class="dropdownLink"><%= link_to 'Shelters', '/shelters', :class => 'menuLink' %></div>
+          <div class="dropdownLink"><%= link_to 'Pets', '/pets', :class => 'menuLink' %></div>
+          <div class="menuLinkRight"><%= link_to 'New Shelter', '/shelters/new', :class => 'menuLink' %></div>
+          <div class="dropdownLink"><%= link_to "Favorites: #{@favorites.total_count}", '/favorites', :class => 'menulink' %></div>
         </div>
       </div>
     </div>
