@@ -1,0 +1,19 @@
+<div class="shelter">
+  <h1><%= @shelter.name %> </h1>
+  <div class="effect2">
+    <%= image_tag 'https://i.imgur.com/Y4SC3En.jpg' %>
+  </div>
+  <p>Address: <%= @shelter.address %></p>
+  <p>City: <%= @shelter.city %></p>
+  <p>State: <%= @shelter.state %></p>
+  <p>Zip: <%= @shelter.zip %></p>
+  <div class="shelterActions">
+    <%= link_to 'Available Pets', "/shelters/#{@shelter.id}/pets" %>
+  </div>
+  <div class="shelterActions">
+    <%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %>
+  </div>
+  <div class="shelterActions">
+    <%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %>
+  </div>
+</div>

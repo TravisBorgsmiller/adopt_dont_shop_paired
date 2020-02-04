@@ -11,7 +11,9 @@
         <div class="shelterActions"><%= link_to 'Available Pets', "/shelters/#{@shelter.id}/pets" %></div>
         <div class="shelterActions"><%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %></div>
         <div class="shelterActions"><%= link_to 'Delete Shelter', "/shelters/#{@shelter.id}", method: :delete %></div>
+        <div class="shelterActions"><%= link_to "Create new review for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews/new" %></div>
       </div>
+    <% end %>
     </div>
     <div class="shelterColumn2">
       <% @shelter.reviews.each do |review| %>

@@ -1,0 +1,38 @@
+.ptagInline {
+  display: inline-block;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+.petIndexBlock {
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+.petsShowHeader {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.petsContentBlock {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.petsActions {
+  display: inline-block;
+  width: fit-content;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.createPet {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-content: center;
+}

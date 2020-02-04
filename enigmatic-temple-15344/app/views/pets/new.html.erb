@@ -1,0 +1,35 @@
+<div class="createPet">
+  <h1>Add a new pet to <%= "#{@shelter.name}" %></h1>
+  <div class="formAlign">
+    <%= form_tag "/shelters/#{@shelter_id}/pets", method: :post do %>
+      <div class="formField">
+        <%= label_tag :image %>
+        <%= text_field_tag :image %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :name %>
+        <%= text_field_tag :name %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :description %>
+        <%= text_field_tag :description %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :age %>
+        <%= text_field_tag :age %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :sex %>
+        <%= text_field_tag :sex %>
+      </div>
+
+      <div class="formField">
+        <%= submit_tag 'Create Pet' %>
+      </div>
+    <% end %>
+  </div>
+</div>

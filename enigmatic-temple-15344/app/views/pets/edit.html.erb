@@ -1,0 +1,41 @@
+<div class="createPet">
+  <h3><%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h3>
+  <div class="formAlign">
+    <%= form_tag "/pets/#{@pet.id}", method: :patch do %>
+
+      <div class="formField">    
+        <%= label_tag :image %>
+        <%= text_field_tag :image %>
+      </div>
+
+      <div class="formField"> 
+        <%= label_tag :name %>
+        <%= text_field_tag :name %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :description %>
+        <%= text_field_tag :description %>
+      </div>
+
+      <div class="formField"> 
+        <%= label_tag :age %>
+        <%= text_field_tag :age %>
+      </div>
+
+      <div class="formField"> 
+        <%= label_tag :sex %>
+        <%= text_field_tag :sex %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :status %>
+        <%= text_field_tag :status %>
+      </div>
+
+      <div class="formField"> 
+        <%= submit_tag 'Update Pet' %>
+      </div>
+    <% end %>
+  </div>
+</div>
