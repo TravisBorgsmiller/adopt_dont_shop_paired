@@ -31,5 +31,6 @@
         <%= image_tag "#{review.image}" %>
       </div>
     <% end %>
+    <%= link_to "Create new review for #{@shelter.name}", "/shelters/#{@shelter.id}/reviews/new" %>
   </div>
 </div>
