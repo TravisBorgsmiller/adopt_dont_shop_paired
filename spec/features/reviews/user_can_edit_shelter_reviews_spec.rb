@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a visitor I can edit a shelter review from its show page', type: :feature do
   before :each do
-    shelter1 = Shelter.create(
+    @shelter1 = Shelter.create(
       name: "Mike's Shelter",
       address: '1331 17th Street',
       city: 'Denver',
@@ -10,7 +10,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
       zip: '80202'
     )
 
-    pet1 = shelter1.pets.create(
+    @pet1 = shelter1.pets.create(
       image: 'https://cdn2-www.dogtime.com/assets/uploads/2011/03/puppy-development.jpg',
       name: 'Athena',
       description: 'butthead',
@@ -19,7 +19,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
       status: 'adoptable'
     )
 
-    review1 = shelter1.reviews.create(
+    @review1 = shelter1.reviews.create(
       title: "A glowing review",
       rating: "5",
       content: "Great facility, friendly staff!",
