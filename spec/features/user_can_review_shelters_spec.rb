@@ -23,7 +23,7 @@ RSpec.describe 'As a visitor', type: :feature do
       review1 = shelter1.reviews.create(
         title: "A glowing review",
         rating: "5",
-        content: "Great facility, great staff!",
+        content: "Great facility, friendly staff!",
         image: "https://i.imgur.com/dciDr8Q.jpg"
       )
 
@@ -36,14 +36,3 @@ RSpec.describe 'As a visitor', type: :feature do
     end
   end
 end
-
-# User Story 2, Shelter Reviews
-
-# As a visitor,
-# When I visit a shelter's show page,
-# I see a list of reviews for that shelter
-# Each review will have:
-# - title
-# - rating
-# - content
-# - an optional picture
