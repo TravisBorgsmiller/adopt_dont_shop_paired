@@ -66,3 +66,10 @@ end
 # I can update any of these fields and submit the form.
 # When the form is submitted, I should return to that shelter's show page
 # And I can see my updated review
+
+# User Story 6, Edit a Shelter Review, cont.
+
+# As a visitor,
+# When I fail to enter a title, a rating, and/or content in the edit shelter review form, but still try to submit the form
+# I see a flash message indicating that I need to fill in a title, rating, and content in order to edit a shelter review
+# And I'm returned to the edit form to edit that review
