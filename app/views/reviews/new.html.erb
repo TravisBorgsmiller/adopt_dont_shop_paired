@@ -1,6 +1,6 @@
 <h1>Add Review</h1>
 
-<%= form_tag("/shelters/#{@shelter.id}/reviews", method: :post) do %><section>
+<%= form_tag("/shelters/#{@shelter.id}/reviews", method: :post) do %>
   <%= label_tag "Title:" %>
   <%= text_field_tag :title %><br>
   <%= label_tag "Rating:" %>
@@ -8,6 +8,6 @@
   <%= label_tag "Content:" %>
   <%= text_field_tag :content %><br>
   <%= label_tag "Image (optional): " %>
-  <%= text_field_tag :image  %><br></section>
+  <%= text_field_tag :image  %><br>
   <%= submit_tag 'Submit' %>
 <% end %>

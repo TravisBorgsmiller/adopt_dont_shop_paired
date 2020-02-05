@@ -4,6 +4,8 @@ Shelter.destroy_all
 
 Pet.destroy_all
 
+Review.destroy_all
+
 shelter1 = Shelter.create(
   name: "Mike's Shelter",
   address: '1331 17th Street',
@@ -36,4 +38,18 @@ shelter2.pets.create(
   age: '4',
   sex: 'male',
   status: 'adoptable'
+)
+
+shelter1.reviews.create(
+  title: "A glowing review",
+  rating: "5",
+  content: "Great facility, friendly staff!",
+  image: "https://i.imgur.com/dciDr8Q.jpg"
+)
+
+shelter2.reviews.create(
+  title: "Wow, super nice",
+  rating: "4",
+  content: "Amazing experience",
+  image: "https://i.imgur.com/dciDr8Q.jpg"
 )

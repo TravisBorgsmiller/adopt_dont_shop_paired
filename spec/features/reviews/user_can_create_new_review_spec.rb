@@ -18,7 +18,7 @@ RSpec.describe 'As a visitor I can create a new shelter review' do
       sex: 'female',
       status: 'adoptable'
     )
-end
+  end
   it 'links form from shelter show page' do
 
     visit "/shelters/#{@shelter1.id}"

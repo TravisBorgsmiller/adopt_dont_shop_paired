@@ -19,8 +19,8 @@
         <div class="reviewTitle"><%= review.title %></div>
         <div class="reviewAttribute">Rating: <%= review.rating %></div>
         <div class="reviewAttribute"><%= review.content %></div>
-        <div><%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %></div>
-        <div><%= link_to "Delete Review", "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %></div>
+        <div><%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit", id: "#{review.id}"  %></div>
+        <div><%= link_to "Delete Review", "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete, id: "#{review.id}" %></div>
         <div class="effect2"><%= image_tag "#{review.image}" %></div>
       <% end %>
     </div>
