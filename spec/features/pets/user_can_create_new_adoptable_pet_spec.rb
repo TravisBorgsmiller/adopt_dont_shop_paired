@@ -8,8 +8,7 @@ RSpec.describe 'As a visitor', type: :feature do
         address: '3734 Cedar Court',
         city: 'Boulder',
         state: 'CO',
-        zip: '80301'
-      )
+        zip: '80301')
 
       visit "/shelters/#{shelter3.id}/pets"
 
@@ -25,9 +24,9 @@ RSpec.describe 'As a visitor', type: :feature do
 
       click_button 'Create Pet'
 
-      expect(current_path).to eq("/shelters/#{shelter3.id}/pets")
-
       new_pet = Pet.last
+
+      expect(current_path).to eq("/shelters/#{shelter3.id}/pets")
 
       expect(page).to have_css("img[src*='#{new_pet.image}']")
       expect(page).to have_content(new_pet.name)
