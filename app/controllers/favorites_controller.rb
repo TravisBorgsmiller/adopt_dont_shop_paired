@@ -14,5 +14,4 @@ class FavoritesController < ApplicationController
     flash[:success] = "#{pet.name} has been added to your favorites!"
     redirect_to "/pets/#{pet.id}"
   end
-
 end

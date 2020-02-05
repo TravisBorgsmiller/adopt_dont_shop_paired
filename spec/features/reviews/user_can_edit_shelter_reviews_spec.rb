@@ -35,7 +35,9 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
     expect(page).to have_content('Great facility, friendly staff!')
     expect(page).to have_css("img[src*='#{@review1.image}']")
 
-    click_link 'Edit Review'
+    within("div#editReview_#{@review1.id}") do
+      click_link 'Edit Review'
+    end
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}/reviews/#{@review1.id}/edit")
   end

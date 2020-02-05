@@ -32,7 +32,10 @@ RSpec.describe 'As a visitor', type: :feature do
 
     expect(page).to have_content('A glowing review')
     expect(page).to have_content('Great facility, friendly staff!')
-    click_link 'Delete Review'
+
+    within("div#deleteReview_#{@review1.id}") do
+      click_link 'Delete Review'
+    end
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
