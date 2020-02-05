@@ -1,0 +1,28 @@
+<div>
+  <h3><%= link_to "#{@review.shelter_id}", "/shelters/#{@review.shelter_id}" %></h3>
+  <div class="formAlign">
+    <%= form_tag "/reviews/#{@review.id}", method: :patch do %>
+      <div class="formField">
+        <%= label_tag :title %>
+        <%= text_field_tag :title, @review.title %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :rating %>
+        <%= select_tag :rating, options_for_select([5,4,3,2,1]), selected: "#{@review.rating}" %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :content %>
+        <%= text_field_tag :content, @review.content %>
+      </div>
+
+      <div class="formField">
+        <%= label_tag :image %>
+        <%= text_field_tag :image, @review.image %>
+      </div>
+
+      <%= submit_tag 'Save' %>
+    <% end %>
+  </div>
+</div>

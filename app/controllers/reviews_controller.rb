@@ -15,10 +15,25 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+
+    if @review.update(review_params)
+      flash[:success] = 'Review updated!'
+      redirect_to "/shelters/#{@review.shelter_id}"
+    else
+      flash.now[:error] = 'Review not updated. Please complete required fields.'
+      render :edit
+    end
+  end
 end
 
   private
 
   def review_params
-    params.permit(:title, :rating, :content, :image)
+    params.permit(:title, :rating, :content, :image, :shelter_id)
   end
