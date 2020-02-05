@@ -1,7 +1,7 @@
 <div>
   <h3><%= link_to "#{@review.shelter_id}", "/shelters/#{@review.shelter_id}" %></h3>
   <div class="formAlign">
-    <%= form_tag "/reviews/#{@review.id}", method: :patch do %>
+    <%= form_tag "/shelters/#{@review.shelter_id}/reviews/#{@review.id}", method: :patch do %>
       <div class="formField">
         <%= label_tag :title %>
         <%= text_field_tag :title, @review.title %>
