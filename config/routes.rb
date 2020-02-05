@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/shelters/:id/reviews', to: 'reviews#create'
   get '/shelters/:id/reviews/:id/edit', to: 'reviews#edit'
   patch 'shelters/:id/reviews/:id', to: 'reviews#update'
+  delete '/shelters/:id/reviews/:id', to: 'reviews#destroy'
 
   patch '/favorites/:id', to: 'favorites#update'
   get '/favorites', to: 'favorites#index'
