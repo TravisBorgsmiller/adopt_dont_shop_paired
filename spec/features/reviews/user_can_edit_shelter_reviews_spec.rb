@@ -37,11 +37,11 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
 
     click_link 'Edit Review'
 
-    expect(current_path).to eq("/reviews/#{@review1.id}/edit")
+    expect(current_path).to eq("/shelters/#{@shelter1.id}/reviews/#{@review1.id}/edit")
   end
 
   it 'does not allow a user to update a review without required information' do
-    visit "/reviews/#{@review1.id}/edit"
+    visit "/shelters/#{@shelter1.id}/reviews/#{@review1.id}/edit"
 
     fill_in 'Title', with: 'Another glowing review'
     fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
@@ -49,7 +49,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
     click_button 'Save'
 
     expect(page).to have_content('Review not updated. Please complete required fields.')
-    expect(current_path).to eq("/reviews/#{@review1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter1.id}/reviews/#{@review1.id}")
     expect(page).to have_button('Save')
 
     fill_in 'Title', with: 'Another glowing review'
