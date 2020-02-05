@@ -25,28 +25,20 @@ RSpec.describe 'As a visitor', type: :feature do
       content: "Great facility, friendly staff!",
       image: "https://i.imgur.com/dciDr8Q.jpg"
     )
+  end
 
-    it 'I can delete a review from the shelter show page' do
-      visit "/shelters/#{@shelter1.id}"
+  it 'I can delete a review from the shelter show page' do
+    visit "/shelters/#{@shelter1.id}"
 
-      expect(page).to have_content('A glowing review')
-      expect(page).to have_content('Great facility, friendly staff!')
-      click_link 'Delete Review'
+    expect(page).to have_content('A glowing review')
+    expect(page).to have_content('Great facility, friendly staff!')
+    click_link 'Delete Review'
 
-      expect(current_path).to eq("/shelters/#{@shelter1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
-      expect(page).to_not have_content('A glowing review')
-      expect(page).to_not have_content('Rating: 5')
-      expect(page).to_not have_content('Great facility, friendly staff!')
-      expect(page).to_not have_css("img[src*='#{@review1.image}']")
-    end
+    expect(page).to_not have_content('A glowing review')
+    expect(page).to_not have_content('Rating: 5')
+    expect(page).to_not have_content('Great facility, friendly staff!')
+    expect(page).to_not have_css("img[src*='#{@review1.image}']")
   end
 end
-
-# User Story 7, Delete a Shelter Review
-
-# As a visitor,
-# When I visit a shelter's show page,
-# I see a link next to each shelter review to delete the review.
-# When I delete a shelter review I am returned to the shelter's show page
-# And I should no longer see that shelter review
