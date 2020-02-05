@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   get '/favorites', to: 'favorites#index'
 
   get '/pets', to: 'pets#index'
-  get '/shelters/:id/pets/new', to: 'pets#new'
-  get '/pets/:id', to: 'pets#show'
-  post '/shelters/:id/pets', to: 'pets#create'
+  get '/shelters/:shelter_id/pets/new', to: 'pets#new'
+  get '/pets/:shelter_id', to: 'pets#show'
+  post '/shelters/:shelter_id/pets', to: 'pets#create'
   get '/pets/:id/edit', to: 'pets#edit'
   patch '/pets/:id', to: 'pets#update'
   delete '/pets/:id', to: 'pets#delete'

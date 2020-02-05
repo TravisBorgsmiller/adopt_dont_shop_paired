@@ -5,19 +5,18 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:shelter_id])
     @shelter = Shelter.find(@pet.shelter_id)
   end
 
   def new
-    @shelter_id = params[:id]
-    @shelter = Shelter.find(params[:id])
+    @shelter_id = params[:shelter_id]
+    @shelter = Shelter.find(params[:shelter_id])
   end
 
   def create
-    shelter = Shelter.find(params[:id])
-    shelter.pets.create(pet_params)
-
+    shelter = Shelter.find(params[:shelter_id])
+    pet = shelter.pets.create(pet_params)
     redirect_to "/shelters/#{shelter.id}/pets"
   end
 
@@ -53,8 +52,7 @@ class PetsController < ApplicationController
         :description,
         :age,
         :sex,
-        :status,
-        :shelter_id
+        :status
       )
     end
 end

@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20200204033601) do
     t.string "image"
     t.string "age"
     t.string "sex"
-    t.bigint "shelter_id"
     t.string "description"
-    t.string "status"
+    t.string "status", default: "adoptable"
+    t.bigint "shelter_id"
     t.index ["shelter_id"], name: "index_pets_on_shelter_id"
   end
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20200204033601) do
     t.string "title"
     t.string "rating"
     t.text "content"
-    t.string "image"
+    t.string "image", default: "https://i.imgur.com/dciDr8Q.jpg"
     t.bigint "shelter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
