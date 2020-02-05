@@ -10,7 +10,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
       zip: '80202'
     )
 
-    @pet1 = shelter1.pets.create(
+    @pet1 = @shelter1.pets.create(
       image: 'https://cdn2-www.dogtime.com/assets/uploads/2011/03/puppy-development.jpg',
       name: 'Athena',
       description: 'butthead',
@@ -19,7 +19,7 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
       status: 'adoptable'
     )
 
-    @review1 = shelter1.reviews.create(
+    @review1 = @shelter1.reviews.create(
       title: "A glowing review",
       rating: "5",
       content: "Great facility, friendly staff!",
@@ -28,27 +28,28 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
   end
 
   it 'it links to a form to update the review' do
-    visit "/shelters/#{shelter1.id}"
+    visit "/shelters/#{@shelter1.id}"
 
     expect(page).to have_content('A glowing review')
     expect(page).to have_content('Rating: 5')
     expect(page).to have_content('Great facility, friendly staff!')
-    expect(page).to have_css("img[src*='#{review1.image}']")
+    expect(page).to have_css("img[src*='#{@review1.image}']")
 
-    click_link 'Update Review'
+    click_link 'Edit Review'
 
-    expect(current_path).to eq("/shelters/#{shelter1.id}/reviews/edit")
+    expect(current_path).to eq("/reviews/#{@review1.id}/edit")
   end
 
   it 'does not allow a user to update a review without required information' do
-    visit "/shelters/#{shelter1.id}/reviews/edit"
+    visit "/reviews/#{@review1.id}/edit"
 
     fill_in 'Title', with: 'Another glowing review'
     fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
+    fill_in 'Content', with: ''
     click_button 'Save'
 
     expect(page).to have_content('Review not updated. Please complete required fields.')
-    expect(current_path).to eq("/shelters/#{shelter1.id}/reviews/edit")
+    expect(current_path).to eq("/reviews/#{@review1.id}")
     expect(page).to have_button('Save')
 
     fill_in 'Title', with: 'Another glowing review'
@@ -57,32 +58,10 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
     fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
     click_button 'Save'
 
-    expect(current_path).to eq("/shelters/#{shelter1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
     expect(page).to have_content('Another glowing review')
     expect(page).to have_content('Rating: 4')
     expect(page).to have_content('Super dope')
-    expect(page).to have_css("img[src*='#{review1.image}']")
+    expect(page).to have_css("img[src*='#{@review1.image}']")
   end
 end
-
-# User Story 5, Edit a Shelter Review
-
-# As a visitor,
-# When I visit a shelter's show page
-# I see a link to edit the shelter review next to each review.
-# When I click on this link, I am taken to an edit shelter review path
-# On this new page, I see a form that includes that review's pre populated data:
-# - title
-# - rating
-# - content
-# - image
-# I can update any of these fields and submit the form.
-# When the form is submitted, I should return to that shelter's show page
-# And I can see my updated review
-
-# User Story 6, Edit a Shelter Review, cont.
-
-# As a visitor,
-# When I fail to enter a title, a rating, and/or content in the edit shelter review form, but still try to submit the form
-# I see a flash message indicating that I need to fill in a title, rating, and content in order to edit a shelter review
-# And I'm returned to the edit form to edit that review

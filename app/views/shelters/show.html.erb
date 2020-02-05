@@ -19,6 +19,7 @@
         <div class="reviewTitle"><%= review.title %></div>
         <div class="reviewAttribute">Rating: <%= review.rating %></div>
         <div class="reviewAttribute"><%= review.content %></div>
+        <div><%= link_to "Edit Review", "/reviews/#{review.id}/edit" %></div>
         <div class="effect2"><%= image_tag "#{review.image}" %></div>
       <% end %>
     </div>

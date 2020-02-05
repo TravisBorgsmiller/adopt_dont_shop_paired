@@ -22,9 +22,11 @@
       </div>
     </div>
 
-    <% flash.each do |type, message| %>
+    <div id="flashMessage">
+      <% flash.each do |type, message| %>
         <p><%= message %></p>
       <% end %>
+    </div>
 
     <div id="viewContainer">
       <%= yield %>
