@@ -1,0 +1,9 @@
+<div class="applicationBlock">
+  <%= form_tag "/applications/new", method: :post do %>
+    <% @favorites.contents.each do |key, pet| %>
+      <div class="adoptCheckBox">
+        <%= "Adopt #{key}" %><%= check_box_tag(:adopt, "#{key}") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
