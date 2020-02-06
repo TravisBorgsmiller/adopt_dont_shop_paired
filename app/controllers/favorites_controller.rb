@@ -21,5 +21,4 @@ class FavoritesController < ApplicationController
     flash[:notice] = "#{pet.name} has been removed from Favorites!"
     redirect_to '/favorites'
   end
-
 end

@@ -16,4 +16,10 @@ class Favorite
   def remove_pet(id)
     @contents.delete(id.to_s)
   end
+
+  def delete_favorites(pet_ids)
+    pet_ids.each do |id|
+      @contents.delete(id)
+    end
+  end
 end

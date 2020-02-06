@@ -4,7 +4,7 @@
     <% @pets.each do |pet| %>
       <div id="pet_<%= pet.id %>">
         <%= label_tag pet.name %>
-        <%= check_box_tag :adopt, "#{pet.id}" %>
+        <%= check_box_tag "adopt_pets[]", pet.id %>
       </div>
     <% end %>
 

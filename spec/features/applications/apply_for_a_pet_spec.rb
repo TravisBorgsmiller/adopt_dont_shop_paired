@@ -69,13 +69,12 @@ RSpec.describe 'As a visitor', type: :feature do
       click_link 'Adopt Pet(s)'
 
       expect(current_path).to eq('/applications/new')
-
       within("div#pet_#{@pet1.id}") do
-        check :adopt
+        check :adopt_pets_
       end
 
       within("div#pet_#{@pet2.id}") do
-        check :adopt
+        check :adopt_pets_
       end
 
       fill_in 'Name', with: 'Jordan'

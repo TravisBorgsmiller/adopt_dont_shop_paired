@@ -4,9 +4,12 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    application = Application.new(application_params)
-
+    application = Application.create(application_params)
+    pets = Pet.find(params[:adopt_pets])
+    pet_ids = params[:adopt_pets]
+    application.pets << pets
     if application.save
+      @favorites.delete_favorites(pet_ids)
       flash[:success] = 'Application submitted, thank you!'
       redirect_to '/favorites'
     else
@@ -25,7 +28,6 @@ end
       :state,
       :zip,
       :phone,
-      :description,
-      :pet_id
+      :description
     )
   end
