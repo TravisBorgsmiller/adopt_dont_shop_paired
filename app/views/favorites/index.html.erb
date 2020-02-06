@@ -8,8 +8,9 @@
       <p><%= image_tag "#{pet.image}" %></p>
     </section>
   <% end %>
-  <h3><%= link_to 'Remove all favorited pets', "/favorites", method: :delete %></h3>
-  </div>
+  <%= link_to 'Adopt Pet(s)', "/applications/new" %>
+  <h3><%= link_to 'Remove all favorited pets', '/favorites', method: :delete  %></h3>
+</div>
 <% else %>
   <h2>No Pets to Display. Please add some pets to your favorites!</h2>
 <% end %>

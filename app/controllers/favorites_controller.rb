@@ -28,5 +28,4 @@ class FavoritesController < ApplicationController
     redirect_to "/favorites"
     session[:favorites] = favorite.contents
   end
-
 end
