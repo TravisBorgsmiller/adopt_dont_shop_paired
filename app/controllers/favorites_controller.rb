@@ -16,10 +16,16 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    pet = Pet.find(params[:id])
-    favorite.remove_pet(pet.id)
-    flash[:notice] = "#{pet.name} has been removed from Favorites!"
-    redirect_to '/favorites'
+    if params[:id]
+      pet = Pet.find(params[:id])
+      favorite.remove_pet(pet.id)
+      flash[:notice] = "#{pet.name} has been removed from Favorites!"
+    else
+      favorite.remove_all
+      flash[:notice] = "Your favorited pets have been removed"
+   end
+    redirect_to "/favorites"
+    session[:favorites] = favorite.contents
   end
 
 end
