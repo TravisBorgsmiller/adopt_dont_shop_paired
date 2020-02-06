@@ -18,6 +18,12 @@ RSpec.describe 'As a visitor when I favorite a pet' do
       sex: 'female',
       status: 'adoptable'
     )
+    @pet2 = @shelter1.pets.create!(image: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg',
+                                 name: 'Zeus',
+                                 age: '3',
+                                 sex: 'male',
+                                 description: 'wild',
+                                 status: 'adoptable')
 
     @review1 = @shelter1.reviews.create(
       title: "A glowing review",
@@ -46,5 +52,19 @@ RSpec.describe 'As a visitor when I favorite a pet' do
       expect(page).not_to have_content(@pet1.description)
     end
     expect(page).to have_content("#{@pet1.name} has been removed from Favorites!")
+  end
+  it 'will delete all favorites from page' do
+    visit "/pets/#{@pet1.id}"
+    expect(current_path).to eq("/pets/#{@pet1.id}")
+    click_button 'Favorite'
+    expect(page).to have_content("Favorites: 1")
+    visit "/pets/#{@pet2.id}"
+    expect(current_path).to eq("/pets/#{@pet2.id}")
+    click_button 'Favorite'
+    expect(page).to have_content("Favorites: 2")
+    visit '/favorites'
+    click_link 'Remove all favorited pets'
+    expect(current_path).to eq('/favorites')
+    expect(page).to have_content('No Pets to Display. Please add some pets to your favorites!')
   end
 end

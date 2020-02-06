@@ -22,4 +22,8 @@ class Favorite
       @contents.delete(id)
     end
   end
+
+  def remove_all
+    @contents.clear
+  end
 end
