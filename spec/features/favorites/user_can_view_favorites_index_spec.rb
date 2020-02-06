@@ -54,4 +54,8 @@ RSpec.describe "favorites index page", type: :feature do
         expect(page).to have_css("img[src*='#{@pet2.image}']")
       end
     end
+    it 'shows no favorites page' do
+      visit '/favorites'
+      expect(page).to have_content('No Pets to Display. Please add some pets to your favorites!')
+    end 
   end

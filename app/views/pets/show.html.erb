@@ -1,8 +1,8 @@
 <h1 class="petsShowHeader"><%= @pet.name %></h1>
 <% if favorite.contents.include?((@pet.id).to_s) %>
-  <%= button_to "Delete from favorites", "/favorites/#{@pet.id}", method: :delete %>
+  <%= button_to "Delete from favorites", "/favorites/#{@pet.id}?delete_or_favorite=delete", method: :patch %>
 <% else %>
-  <%= button_to "Favorite", "/favorites/#{@pet.id}", method: :patch %>
+  <%= button_to "Favorite", "/favorites/#{@pet.id}?delete_or_favorite=favorite", method: :patch %>
 <% end %>
 <div class="petsContentBlock">
   <div class="effect2">
