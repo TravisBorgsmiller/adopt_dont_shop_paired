@@ -1,10 +1,10 @@
 <div class="favoritePets">
-  <h1>Favorite Pets</h1>
+<h1>Favorite Pets</h1>
 
-  <% @pets.each do |pet| %>
-    <section id="favorites-<%= pet.id %>">
-      <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-      <p><img src= <%= "#{pet.image}" %>></p>
-    </section>
-  <% end %>
+<% @pets.each do |pet| %>
+  <section id="favorites-<%= pet.id %>">
+    <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+    <p><%= image_tag "#{pet.image}" %></p>
+  </section>
+<% end %>
 </div>
