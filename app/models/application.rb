@@ -3,7 +3,7 @@ class Application < ApplicationRecord
   has_many :pet_applications
   has_many :pets, through: :pet_applications
 
-  def self.find_pets(favorites)
+  def self.find_fav_pets(favorites)
     keys = favorites.keys
     @favorite_pets = []
     keys.each do |key|

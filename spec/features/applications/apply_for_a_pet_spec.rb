@@ -49,15 +49,19 @@ RSpec.describe 'As a visitor', type: :feature do
       click_link 'Adopt Pet(s)'
 
       expect(current_path).to eq('/applications/new')
-      expect(page).to have_css('.adoptCheckBox')
+      expect(page).to have_css("#pet_#{@pet1.id}")
       expect(page).to have_button('Submit')
       expect(page).to have_field('Name')
       expect(page).to have_field('Address')
       expect(page).to have_field('City')
       expect(page).to have_field('State')
       expect(page).to have_field('Zip')
-      expect(page).to have_field('Phone Number')
+      expect(page).to have_field('Phone')
       expect(page).to have_field('Description')
+      expect(page).to have_button('Submit')
+
+      # expect(page).to have_content('Application not submitted. Please complete the required fields.')
+      expect(current_path).to eq('/applications/new')
     end
 
     it 'I complete and submit the adoption form' do
@@ -65,14 +69,21 @@ RSpec.describe 'As a visitor', type: :feature do
       click_link 'Adopt Pet(s)'
 
       expect(current_path).to eq('/applications/new')
-      check "Adopt: #{@pet1.name}"
-      check "Adopt: #{@pet2.name}"
+
+      within("div#pet_#{@pet1.id}") do
+        check :adopt
+      end
+
+      within("div#pet_#{@pet2.id}") do
+        check :adopt
+      end
+
       fill_in 'Name', with: 'Jordan'
       fill_in 'Address', with: '4231 Ponderosa Court'
       fill_in 'City', with: 'Boulder'
       fill_in 'State', with: 'CO'
       fill_in 'Zip', with: '80301'
-      fill_in 'Phone Number', with: '323.940.3227'
+      fill_in 'Phone', with: '323.940.3227'
       fill_in 'Description', with: "I'm a puppy parent"
       click_button 'Submit'
 
