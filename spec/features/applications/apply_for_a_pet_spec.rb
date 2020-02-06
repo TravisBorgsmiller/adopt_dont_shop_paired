@@ -58,9 +58,9 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_field('Zip')
       expect(page).to have_field('Phone')
       expect(page).to have_field('Description')
-      expect(page).to have_button('Submit')
+      click_button('Submit')
 
-      # expect(page).to have_content('Application not submitted. Please complete the required fields.')
+      expect(page).to have_content('Application not submitted. Please complete the required fields.')
       expect(current_path).to eq('/applications/new')
     end
 
@@ -69,6 +69,7 @@ RSpec.describe 'As a visitor', type: :feature do
       click_link 'Adopt Pet(s)'
 
       expect(current_path).to eq('/applications/new')
+
       within("div#pet_#{@pet1.id}") do
         check :adopt_pets_
       end
@@ -93,25 +94,3 @@ RSpec.describe 'As a visitor', type: :feature do
     end
   end
 end
-
-# User Story 16, Applying for a Pet
-
-# As a visitor
-# When I have added pets to my favorites list
-# And I visit my favorites page ("/favorites")
-# I see a link for adopting my favorited pets
-# When I click that link I'm taken to a new application form
-# At the top of the form, I can select from the pets of which I've
-# favorited for which I'd like this application to apply towards (can be more than one)
-# # When I select one or more pets, and fill in my
-# # - Name
-# # - Address
-# # - City
-# # - State
-# # - Zip
-# # - Phone Number
-# # - Description of why I'd make a good home for this/these pet(s)
-# And I click on a button to submit my application
-# I see a flash message indicating my application went through for the pets that were selected
-# And I'm taken back to my favorites page where I no longer see the pets for which I just
-# applied listed as favorites
