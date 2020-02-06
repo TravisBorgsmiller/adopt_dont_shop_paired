@@ -1,5 +1,9 @@
 <h1 class="petsShowHeader"><%= @pet.name %></h1>
-<%= button_to "Favorite", "/favorites/#{@pet.id}", method: :patch %>
+<% if favorite.contents.include?((@pet.id).to_s) %>
+  <%= button_to "Delete from favorites", "/favorites/#{@pet.id}", method: :delete %>
+<% else %>
+  <%= button_to "Favorite", "/favorites/#{@pet.id}", method: :patch %>
+<% end %>
 <div class="petsContentBlock">
   <div class="effect2">
     <%= image_tag @pet.image %>
