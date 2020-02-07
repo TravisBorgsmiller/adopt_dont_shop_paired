@@ -1,0 +1,7 @@
+<div class="petsApplicationsIndexBlock">
+  <div class="petsApplicationsActive">
+    <% @pet.applications.each do |application| %>
+      <%= link_to application.name, "/applications/#{application.id}" %>
+    <% end %>
+  </div>
+</div>
