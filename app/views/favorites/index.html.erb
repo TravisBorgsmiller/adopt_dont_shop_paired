@@ -1,16 +1,33 @@
-<div class="favoritePets">
+<div class="favoritePetsBlock">
 <% unless @favorites.contents.empty? == true %>
-  <h1>Favorite Pets</h1>
+  <div class="favoritePets">
+    <h1>Favorite Pets</h1>
 
-  <% @pets.each do |pet| %>
-    <section id="favorites-<%= pet.id %>">
-      <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-      <p><%= image_tag "#{pet.image}" %></p>
-    </section>
+    <% @pets.each do |pet| %>
+      <section id="favorites-<%= pet.id %>">
+        <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
+        <p><%= image_tag "#{pet.image}" %></p>
+      </section>
+    <% end %>
+    <%= link_to 'Adopt Pet(s)', "/applications/new" %>
+    <h3><%= link_to 'Remove all favorited pets', '/favorites', method: :delete  %></h3>
+  </div>
+  <div class="noPetFavorites">
+  <% else %>
+    <h2>No Pets to Display. Please add some pets to your favorites!</h2>
   <% end %>
-  <%= link_to 'Adopt Pet(s)', "/applications/new" %>
-  <h3><%= link_to 'Remove all favorited pets', '/favorites', method: :delete  %></h3>
+  </div>
 </div>
-<% else %>
-  <h2>No Pets to Display. Please add some pets to your favorites!</h2>
-<% end %>
+
+<div class="petsWithApplications">
+  <% if  @pet_apps.empty? == false %>
+    <h1>Pets with pending adoption applications:</h1>
+    <% @pet_apps.each do |pet|  %>
+      <div id="pet_<%= pet.id %>">
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>No pet applications submitted</h2>
+  <% end %>
+</div>
