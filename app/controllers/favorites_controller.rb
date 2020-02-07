@@ -1,5 +1,12 @@
 class FavoritesController < ApplicationController
   def index
+    apps = PetApplication.all
+    @pet_apps = []
+    if !apps.nil?
+      apps.each do |app|
+        @pet_apps << Pet.find(app[:pet_id])
+      end
+    end
     pet_ids = @favorites.contents.keys
     @pets = pet_ids.reduce([]) do |value, key|
       value << Pet.find(key.to_i)

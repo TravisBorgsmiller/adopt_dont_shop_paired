@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+  def index
+  end
+
   def new
     @pets = Application.find_fav_pets(@favorites.contents)
   end

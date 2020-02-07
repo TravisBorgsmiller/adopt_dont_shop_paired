@@ -46,7 +46,7 @@ RSpec.describe 'As a visitor when I favorite a pet' do
     expect(page).to have_content("Favorites: 1")
     click_button 'Delete from favorites'
     expect(current_path).to eq('/favorites')
-    within '.favoritePets' do
+    within '.favoritePetsBlock' do
       expect(page).not_to have_content(@pet1.image)
       expect(page).not_to have_content(@pet1.name)
       expect(page).not_to have_content(@pet1.description)
