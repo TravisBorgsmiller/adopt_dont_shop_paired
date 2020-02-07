@@ -89,8 +89,11 @@ RSpec.describe 'As a visitor', type: :feature do
 
       expect(page).to have_content('Application submitted, thank you!')
       expect(current_path).to eq('/favorites')
-      expect(page).to_not have_content('Athena')
-      expect(page).to_not have_content('Odell')
+
+      within("div.favoritePetsBlock") do
+        expect(page).to_not have_content('Athena')
+        expect(page).to_not have_content('Odell')
+      end
     end
   end
 end
