@@ -1,0 +1,20 @@
+<div class="applicationShowBlock">
+  <div class="applicationShowInfo">
+    <div><%= @application[:name] %></div>
+    <div><%= @application[:address] %></div>
+    <div><%= @application[:city] %></div>
+    <div><%= @application[:state] %></div>
+    <div><%= @application[:zip] %></div>
+    <div><%= @application[:phone] %></div>
+    <div><%= @application[:description] %></div>
+  </div>
+  <div class="applicationShowPets">
+    <% @application.pets.each do |pet| %>
+      <div><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></div>
+      <div><%= pet.sex %></div>
+      <div><%= pet.description %></div>
+      <div><%= pet.status %></div>
+      <div><%= pet.image %></div>
+    <% end %>
+  </div>
+</div>
