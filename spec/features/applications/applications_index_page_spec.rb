@@ -72,7 +72,6 @@ RSpec.describe 'As a visitor', type: :feature do
       @pets << application.pet
     end
   end
-
   it 'I can visit an application show page'do
 
     visit "/applications/#{@application[:id]}"
