@@ -2,6 +2,10 @@ class ApplicationsController < ApplicationController
   def index
   end
 
+  def show
+    @application = Application.find(params[:id])
+  end
+
   def new
     @pets = Application.find_fav_pets(@favorites.contents)
   end
