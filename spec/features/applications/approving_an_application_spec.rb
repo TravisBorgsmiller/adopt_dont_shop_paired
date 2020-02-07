@@ -79,6 +79,12 @@ RSpec.describe 'When I visit a application show page', type: :feature do
       expect(page).to have_content(@application.description.to_s)
       expect(page).to have_link(@pet1.name)
       expect(page).to have_link("Approve Application for #{@pet1.name}")
+
+      click_link "Approve Application for #{@pet1.name}"
+
+      expect(current_path).to eq("/pets/#{@pet1.id}")
+      expect(page).to have_content('Status: pending')
+      expect(page).to have_content("Holding for: #{@application.name}")
     end
   end
 end
