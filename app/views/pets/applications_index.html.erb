@@ -1,7 +1,13 @@
 <div class="petsApplicationsIndexBlock">
-  <div class="petsApplicationsActive">
+  <% if @pet.applications.empty? == false %>
+  <div id="petsApplicationsActive">
     <% @pet.applications.each do |application| %>
       <%= link_to application.name, "/applications/#{application.id}" %>
-    <% end %>
   </div>
+  <% end %>
+  <% else %>
+  <div id="noPetApplications">
+    <h1>No Applications for this Pet</h1>
+  </div>
+  <% end %>
 </div>
