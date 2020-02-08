@@ -19,4 +19,7 @@
   <div class="petsActions">
     <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
   </div>
+  <div>
+    <%= link_to 'Applications', "/pets/#{@pet.id}/applications" %>
+  </div>
 </div>
