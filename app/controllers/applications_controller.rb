@@ -24,6 +24,14 @@ class ApplicationsController < ApplicationController
       redirect_to '/applications/new'
     end
   end
+
+  def update
+    pet = Pet.find(params[:pet_id])
+    pet.update(status: 'pending')
+
+    redirect_to "/pets/#{pet.id}"
+  end
+
     private
 
     def application_params

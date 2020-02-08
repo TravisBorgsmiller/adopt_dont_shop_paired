@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'As a visitor', type: :feature do
+RSpec.describe 'When I visit a application show page', type: :feature do
   before :each do
     @shelter1 = Shelter.create(
       name: "Mike's Shelter",
@@ -63,39 +63,28 @@ RSpec.describe 'As a visitor', type: :feature do
     fill_in 'Description', with: "I'm a puppy parent"
     click_button 'Submit'
 
-    expect(current_path).to eq('/favorites')
-
     @application = Application.last
-    @pet_applications = PetApplication.all
-    @pets = []
-    @pet_applications.each do |application|
-      @pets << application.pet
-    end
   end
-  it 'I can visit an application show page'do
 
-    visit "/applications/#{@application[:id]}"
+  describe 'For every pet included on the application' do
+    it 'I can click a link to approve the application for that pet' do
+      visit "/applications/#{@application.id}"
 
-    expect(page).to have_content(@application[:name])
-    expect(page).to have_content(@application[:address])
-    expect(page).to have_content(@application[:city])
-    expect(page).to have_content(@application[:state])
-    expect(page).to have_content(@application[:zip])
-    expect(page).to have_content(@application[:phone])
-    expect(page).to have_content(@application[:description])
+      expect(current_path).to eq("/applications/#{@application.id}")
+      expect(page).to have_content(@application.name.to_s)
+      expect(page).to have_content(@application.address.to_s)
+      expect(page).to have_content(@application.city.to_s)
+      expect(page).to have_content(@application.state.to_s)
+      expect(page).to have_content(@application.phone.to_s)
+      expect(page).to have_content(@application.description.to_s)
+      expect(page).to have_link(@pet1.name)
+      expect(page).to have_link("Approve Application for #{@pet1.name}")
 
-    expect(page).to have_link(@pets[0][:name])
-    expect(page).to have_content(@pets[0][:age])
-    expect(page).to have_content(@pets[0][:sex])
-    expect(page).to have_content(@pets[0][:description])
-    expect(page).to have_content(@pets[0][:status])
-    expect(page).to have_content(@pets[0][:image])
+      click_link "Approve Application for #{@pet1.name}"
 
-    expect(page).to have_link(@pets[1][:name])
-    expect(page).to have_content(@pets[1][:age])
-    expect(page).to have_content(@pets[1][:sex])
-    expect(page).to have_content(@pets[1][:description])
-    expect(page).to have_content(@pets[1][:status])
-    expect(page).to have_content(@pets[1][:image])
+      expect(current_path).to eq("/pets/#{@pet1.id}")
+      expect(page).to have_content('Status: pending')
+      expect(page).to have_content("Holding for: #{@application.name}")
+    end
   end
 end

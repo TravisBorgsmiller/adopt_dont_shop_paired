@@ -12,6 +12,9 @@
   <p>Age: <%= @pet.age %></p>
   <p>Sex: <%= @pet.sex %></p>
   <p>Status: <%= @pet.status %></p>
+  <% if @pet.status == 'pending' %>
+    <p>Holding for: <%= @pet.pending_for %></p>
+  <% end %>
   <p>Shelter: <%= link_to "#{@shelter.name}", "/shelters/#{@pet.shelter_id}" %></p>
   <div class="petsActions">
     <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>

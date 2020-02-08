@@ -15,6 +15,7 @@
       <div><%= pet.description %></div>
       <div><%= pet.status %></div>
       <div><%= pet.image %></div>
+      <div><%= link_to "Approve Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
     <% end %>
   </div>
 </div>
