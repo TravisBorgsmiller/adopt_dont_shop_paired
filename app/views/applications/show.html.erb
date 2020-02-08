@@ -8,6 +8,7 @@
     <div><%= @application[:phone] %></div>
     <div><%= @application[:description] %></div>
   </div>
+
   <div class="applicationShowPets">
     <% @application.pets.each do |pet| %>
       <div><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></div>
