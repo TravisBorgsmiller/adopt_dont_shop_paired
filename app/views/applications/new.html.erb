@@ -1,6 +1,6 @@
 <div class="applicationBlock">
   <%= form_tag "/applications", method: :post do %>
-    <h1>Who would you like to adopt today?</h3>
+    <h1>Who would you like to adopt today?</h1>
     <% @pets.each do |pet| %>
       <div id="pet_<%= pet.id %>">
         <%= label_tag pet.name %>

@@ -15,7 +15,11 @@
       <div><%= pet.description %></div>
       <div><%= pet.status %></div>
       <div><%= pet.image %></div>
-      <div><%= link_to "Approve Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
+      <% if pet.status == 'adoptable' %>
+        <div><%= link_to "Approve Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
+      <% else %>
+        <div><%= link_to "Unapprove Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
+      <% end %>
     <% end %>
   </div>
 </div>
