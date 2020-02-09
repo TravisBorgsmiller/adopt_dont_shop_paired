@@ -90,17 +90,13 @@ RSpec.describe 'Shelters with pets', type: :feature do
 
   describe "pending can't be deleted" do
     it 'when I click delete' do
-      visit "/shelters"
+      visit '/shelters'
 
       within("p#delete_#{@shelter1.id}") do
-        expect(page).to have_link('Delete')
+        expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(0)
       end
 
-      within("p#delete_#{@shelter1.id}") do
-        click_link 'Delete'
-      end
-
-      expect(page).to have_content("Pets Pending for Adoption. Resolve Before Deleting.")
+      expect(page).to have_content('Pets Pending for Adoption. Resolve Before Deleting.')
     end
   end
 
@@ -109,7 +105,7 @@ RSpec.describe 'Shelters with pets', type: :feature do
       visit "/shelters"
 
       within("p#delete_#{@shelter2.id}") do
-        click_link 'Delete'
+        expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(-1)
       end
 
       expect(current_path).to eq("/shelters")
@@ -118,11 +114,3 @@ RSpec.describe 'Shelters with pets', type: :feature do
     end
   end
 end
-
-# User Story 27, Shelters can be Deleted as long as all pets do not have approved applications on them
-
-# As a visitor
-# If a shelter doesn't have any pets with a pending status
-# I can delete that shelter
-# When that shelter is deleted
-# Then all of their pets are deleted as well
