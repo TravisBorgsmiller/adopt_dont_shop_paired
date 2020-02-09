@@ -1,28 +1,26 @@
-<div>
-  <h3><%= link_to "#{@review.shelter_id}", "/shelters/#{@review.shelter_id}" %></h3>
+<div class="formTemplate">
+  <h3><%= link_to "#{@review.shelter.name}", "/shelters/#{@review.shelter_id}" %>: Edit Review</h3>
+  <div class="effect2"><%= image_tag 'https://i.imgur.com/Y4SC3En.jpg' %></div>
   <div class="formAlign">
     <%= form_tag "/shelters/#{@review.shelter_id}/reviews/#{@review.id}", method: :patch do %>
-      <div class="formField">
-        <%= label_tag :title %>
-        <%= text_field_tag :title, @review.title %>
+      <div>
+        <p>Title:</p>
+        <%= text_field_tag :title, @review.title, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :rating %>
+      <div>
+        <p>Rating:</p>
         <%= select_tag :rating, options_for_select([5,4,3,2,1]), selected: "#{@review.rating}" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :content %>
-        <%= text_field_tag :content, @review.content %>
+      <div>
+        <p>Content:</p>
+        <%= text_field_tag :content, @review.content, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :image %>
-        <%= text_field_tag :image, @review.image %>
+      <div>
+        <p>Image (optional):</p>
+        <%= text_field_tag :image, @review.image, class: "formField" %>
       </div>
-
-      <%= submit_tag 'Save' %>
+      <%= submit_tag 'Save', class: "button" %>
+      </div>
     <% end %>
   </div>
 </div>
