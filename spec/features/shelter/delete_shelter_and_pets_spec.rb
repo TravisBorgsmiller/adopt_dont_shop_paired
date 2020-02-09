@@ -93,10 +93,15 @@ RSpec.describe 'Shelters with no pending pets', type: :feature do
       visit '/shelters'
 
       expect(current_path).to eq('/shelters')
-      expect(@shelter2.pets.first.name).to eq('Xylia')
+
+      within("p#delete_#{@shelter1.id}") do
+        expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(0)
+      end
+
+      expect(page).to have_content('Pets Pending for Adoption. Resolve Before Deleting.')
 
       within("p#delete_#{@shelter2.id}") do
-        click_link 'Delete'
+        expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(-1)
       end
 
       expect(current_path).to eq('/shelters')
