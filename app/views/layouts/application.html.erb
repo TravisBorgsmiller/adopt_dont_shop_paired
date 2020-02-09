@@ -7,19 +7,31 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:700,700i&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div class= "topnav">
+
+    <div class="navbar">
+      <%= link_to 'Home', '/', :class => 'navbar_a' %>
       <div class="dropdown">
+        <button class="dropbtn">Shelters
+          <i class="fa fa-caret-down"></i>
+        </button>
         <div class="dropdown-content">
-          <div class="dropdownLink"><%= link_to 'Home', '/', :class => 'menuLink' %></div>
-          <div class="dropdownLink"><%= link_to 'Shelters', '/shelters', :class => 'menuLink' %></div>
-          <div class="dropdownLink"><%= link_to 'Pets', '/pets', :class => 'menuLink' %></div>
-          <div class="menuLinkRight"><%= link_to 'New Shelter', '/shelters/new', :class => 'menuLink' %></div>
-          <div class="dropdownLink"><%= link_to "Favorites: #{@favorites.total_count}", '/favorites', :class => 'menulink' %></div>
+          <%= link_to 'Local Shelters', '/shelters', :class => 'dropdown-content_a' %>
+          <%= link_to 'Add Shelter', '/shelters/new', :class => 'dropdown-content_a' %>
         </div>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn">Pets
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <%= link_to 'All Pets', '/pets', :class => 'dropdown-content_a' %>
+        </div>
+      </div>
+      <%= link_to "Favorites: #{@favorites.total_count}", '/favorites', :class => 'navbar_a' %>
     </div>
 
     <div id="flashMessage">
