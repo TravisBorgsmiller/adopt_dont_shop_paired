@@ -38,6 +38,7 @@ class PetsController < ApplicationController
       redirect_to "/pets/#{pet.id}"
     else
       Pet.destroy(params[:id])
+      @favorites.remove_pet(pet.id)
       redirect_to '/pets'
     end
   end
