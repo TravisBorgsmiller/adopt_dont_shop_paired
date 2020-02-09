@@ -6,7 +6,7 @@
     <% @pets.each do |pet| %>
       <section id="favorites-<%= pet.id %>">
         <h2><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h2>
-        <p><%= image_tag "#{pet.image}" %></p>
+        <div class="effect2"><%= image_tag "#{pet.image}" %></div>
       </section>
     <% end %>
     <%= link_to 'Adopt Pet(s)', "/applications/new" %>

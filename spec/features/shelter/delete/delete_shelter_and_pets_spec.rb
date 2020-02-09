@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Shelters with pets', type: :feature do
+RSpec.describe 'Shelters with no pending pets', type: :feature do
   before :each do
     @shelter1 = Shelter.create(
       name: "Mike's Shelter",
@@ -71,13 +71,13 @@ RSpec.describe 'Shelters with pets', type: :feature do
       check :adopt_pets_
     end
 
-    fill_in 'Name', with: 'Jordan'
-    fill_in 'Address', with: '4231 Ponderosa Court'
-    fill_in 'City', with: 'Boulder'
-    fill_in 'State', with: 'CO'
-    fill_in 'Zip', with: '80301'
-    fill_in 'Phone', with: '323.940.3227'
-    fill_in 'Description', with: "I'm a puppy parent"
+    fill_in :name, with: 'Jordan'
+    fill_in :address, with: '4231 Ponderosa Court'
+    fill_in :city, with: 'Boulder'
+    fill_in :state, with: 'CO'
+    fill_in :zip, with: '80301'
+    fill_in :phone, with: '323.940.3227'
+    fill_in :description, with: "I'm a puppy parent"
     click_button 'Submit'
 
     @application = Application.last
@@ -88,29 +88,25 @@ RSpec.describe 'Shelters with pets', type: :feature do
     click_link "Approve Application for #{@pet2.name}"
   end
 
-  describe "pending can't be deleted" do
-    it 'when I click delete' do
+  describe 'can be removed' do
+    it 'and will remove all pets' do
       visit '/shelters'
+
+      expect(current_path).to eq('/shelters')
 
       within("p#delete_#{@shelter1.id}") do
         expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(0)
       end
 
       expect(page).to have_content('Pets Pending for Adoption. Resolve Before Deleting.')
-    end
-  end
-
-  describe "not pending can be deleted" do
-    it 'when I click delete' do
-      visit "/shelters"
 
       within("p#delete_#{@shelter2.id}") do
         expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(-1)
       end
 
-      expect(current_path).to eq("/shelters")
-      expect(page).to have_content("Shelter Removed.")
-      expect(page).to_not have_content("Meg's Shelter")
+      expect(current_path).to eq('/shelters')
+      expect(page).to have_content('Shelter Removed.')
+      expect(page).to_not have_content(@shelter2.name)
     end
   end
 end

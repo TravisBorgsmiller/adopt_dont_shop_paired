@@ -45,19 +45,19 @@ RSpec.describe 'As a visitor I can edit a shelter review from its show page', ty
   it 'does not allow a user to update a review without required information' do
     visit "/shelters/#{@shelter1.id}/reviews/#{@review1.id}/edit"
 
-    fill_in 'Title', with: 'Another glowing review'
-    fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
-    fill_in 'Content', with: ''
+    fill_in :title, with: 'Another glowing review'
+    fill_in :image, with: 'https://i.imgur.com/dciDr8Q.jpg'
+    fill_in :content, with: ''
     click_button 'Save'
 
     expect(page).to have_content('Review not updated. Please complete required fields.')
     expect(current_path).to eq("/shelters/#{@shelter1.id}/reviews/#{@review1.id}")
     expect(page).to have_button('Save')
 
-    fill_in 'Title', with: 'Another glowing review'
+    fill_in :title, with: 'Another glowing review'
     select '4', from: :rating
-    fill_in 'Content', with: 'Super dope'
-    fill_in 'Image', with: 'https://i.imgur.com/dciDr8Q.jpg'
+    fill_in :content, with: 'Super dope'
+    fill_in :image, with: 'https://i.imgur.com/dciDr8Q.jpg'
     click_button 'Save'
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}")

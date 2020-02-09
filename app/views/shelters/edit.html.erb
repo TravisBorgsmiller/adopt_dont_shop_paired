@@ -1,35 +1,30 @@
-<div class="createShelter">
+<div class="formTemplate">
   <h3><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h3>
+  <div class="effect2"><%= image_tag 'https://i.imgur.com/Y4SC3En.jpg' %></div>
   <div class="formAlign">
     <%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
-
-      <div class="formField">
-        <%= label_tag :name %>
-        <%= text_field_tag :name, @shelter.name %>
+      <div>
+        <p>Name</p>
+        <%= text_field_tag :name, @shelter.name, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :address %>
-        <%= text_field_tag :address, @shelter.address %>
+      <div>
+        <p>Adderess:</p>
+        <%= text_field_tag :address, @shelter.address, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :city %>
-        <%= text_field_tag :city, @shelter.city %>
-      <div class="formField">
-
-      <div class="formField">
-        <%= label_tag :state %>
-        <%= text_field_tag :state, @shelter.state %>
+      <div>
+        <p>City:</p>
+        <%= text_field_tag :city, @shelter.city, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :zip %>
-        <%= text_field_tag :zip, @shelter.zip %>
+      <div>
+        <p>State:</p>
+        <%= text_field_tag :state, @shelter.state, class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= submit_tag 'Save' %>
+      <div>
+        <p>Zip:</p>
+        <%= text_field_tag :zip, @shelter.zip, class: "formField" %>
+      </div>
+      <div>
+      <%= submit_tag 'Update Shelter', class: "button" %>
       </div>
     <% end %>
   </div>

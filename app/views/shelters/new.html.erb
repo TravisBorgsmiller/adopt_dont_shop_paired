@@ -1,34 +1,30 @@
-<div class="createShelter">
-  <h3>Add a new shelter:</h3>
+<div class="formTemplate">
+  <h1>Add a New Shelter</h1>
+  <div class="effect2"><%= image_tag 'https://i.imgur.com/Y4SC3En.jpg' %></div>
   <div class="formAlign">
     <%= form_tag '/shelters', method: :post do %>
-      <div class="formField">
-        <%= label_tag :name %>
-        <%= text_field_tag :name %>
-      </div>  
-
-      <div class="formField">
-        <%= label_tag :address %>
-        <%= text_field_tag :address %>
+      <div>
+        <p>Name:</p>
+        <%= text_field_tag :name, nil, placeholder: 'Name of shelter?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :city %>
-        <%= text_field_tag :city %>
+      <div>
+        <p>Address:</p>
+        <%= text_area_tag :address, nil, placeholder: 'Shelter address?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :state %>
-        <%= text_field_tag :state %>
+      <div>
+        <p>City:</p>
+        <%= text_field_tag :city, nil, placeholder: 'City where shelter is located?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :zip %>
-        <%= text_field_tag :zip %>
+      <div>
+        <p>State:</p>
+        <%= text_field_tag :state, nil, placeholder: 'State?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= submit_tag 'Create Shelter' %>
+      <div>
+        <p>Zip:</p>
+        <%= text_field_tag :zip, nil, placeholder: 'Zip Code?', class: "formField" %>
+      </div>
+      <%= submit_tag 'Create Shelter', class: "button" %>
       </div>
     <% end %>
+  </div>
 </div>

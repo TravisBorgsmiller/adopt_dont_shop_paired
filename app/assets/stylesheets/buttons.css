@@ -1,0 +1,19 @@
+.button {
+   background-color: rgba(255, 255, 255, 0.884);
+   padding: 8.5px 17px;
+   box-shadow: 0 5px 5px -5px rgb(61, 61, 61);
+   font-size: 1em;
+   font-weight: bold;
+   vertical-align: middle;
+   border-radius: .25em;
+   font-family: 'Ubuntu', sans-serif;
+   }
+.button:hover {
+   border-top-color: #1c1c1c;
+   background: #1c1c1c;
+   color: rgb(245, 245, 245);
+   }
+.button:active {
+   border-top-color: #066e00;
+   background: #066e00;
+   }

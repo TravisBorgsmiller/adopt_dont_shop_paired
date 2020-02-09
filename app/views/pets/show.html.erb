@@ -1,20 +1,22 @@
 <h1 class="petsShowHeader"><%= @pet.name %></h1>
-<% if favorite.contents.include?((@pet.id).to_s) %>
-  <%= button_to "Delete from favorites", "/favorites/#{@pet.id}?delete_or_favorite=delete", method: :patch %>
-<% else %>
-  <%= button_to "Favorite", "/favorites/#{@pet.id}?delete_or_favorite=favorite", method: :patch %>
-<% end %>
-<div class="petsContentBlock">
   <div class="effect2">
     <%= image_tag @pet.image %>
   </div>
-  <p>Description: <%= @pet.description %></p>
-  <p>Age: <%= @pet.age %></p>
-  <p>Sex: <%= @pet.sex %></p>
-  <p>Status: <%= @pet.status %></p>
-  <% if @pet.status == 'pending' %>
-    <p>Holding for: <%= @pet.pending_for %></p>
-  <% end %>
+  <div class="petsContentBlock">
+    <div class="favoriteButtonBlock">
+      <% if favorite.contents.include?((@pet.id).to_s) %>
+        <%= button_to "Delete from favorites", "/favorites/#{@pet.id}?delete_or_favorite=delete", method: :patch, class: "button" %>
+      <% else %>
+        <%= button_to "Favorite", "/favorites/#{@pet.id}?delete_or_favorite=favorite", method: :patch, class: "button" %>
+      <% end %>
+    </div>
+    <p>Description: <%= @pet.description %></p>
+    <p>Age: <%= @pet.age %></p>
+    <p>Sex: <%= @pet.sex %></p>
+    <p>Status: <%= @pet.status %></p>
+    <% if @pet.status == 'pending' %>
+      <p>Holding for: <%= @pet.pending_for %></p>
+    <% end %>
   <p>Shelter: <%= link_to "#{@shelter.name}", "/shelters/#{@pet.shelter_id}" %></p>
   <div class="petsActions">
     <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>

@@ -1,34 +1,29 @@
-<div class="createPet">
-  <h1>Add a new pet to <%= "#{@shelter.name}" %></h1>
+<div class="formTemplate">
+  <h1>Add a new pet to <%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h1>
+  <div class="effect2"><%= image_tag 'https://i.imgur.com/FfMpjrW.jpg' %></div>
   <div class="formAlign">
     <%= form_tag "/shelters/#{@shelter_id}/pets", method: :post do %>
-      <div class="formField">
-        <%= label_tag :image %>
-        <%= text_field_tag :image %>
+      <div>
+        <p>Name:</p>
+        <%= text_field_tag :name, nil, placeholder: 'Name of pet?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :name %>
-        <%= text_field_tag :name %>
+      <div>
+        <p>Description:</p>
+        <%= text_area_tag :description, nil, placeholder: 'Tell us about this pet.', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :description %>
-        <%= text_field_tag :description %>
+      <div>
+        <p>Age:</p>
+        <%= text_field_tag :age, nil, placeholder: 'Approximate age?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :age %>
-        <%= text_field_tag :age %>
+      <div>
+        <p>Sex:</p>
+        <%= text_field_tag :sex, nil, placeholder: 'Male or female?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= label_tag :sex %>
-        <%= text_field_tag :sex %>
+      <div>
+        <p>Image (optional):</p>
+        <%= text_field_tag :image, nil, placeholder: 'Would you like to include an image?', class: "formField" %>
       </div>
-
-      <div class="formField">
-        <%= submit_tag 'Create Pet' %>
+      <%= submit_tag 'Create Pet', class: "button" %>
       </div>
     <% end %>
   </div>

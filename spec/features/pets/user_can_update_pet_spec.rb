@@ -22,12 +22,12 @@ RSpec.describe 'As a visitor', type: :feature do
 
       expect(current_path).to eq("/pets/#{pet1.id}/edit")
 
-      fill_in 'Image', with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
-      fill_in 'Name', with: 'Xylia'
-      fill_in 'Age', with: '6'
-      fill_in 'Sex', with: 'female'
-      fill_in 'Description', with: 'cool cool'
-      fill_in 'Status', with: 'adopted'
+      fill_in :image, with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
+      fill_in :name, with: 'Xylia'
+      fill_in :age, with: '6'
+      fill_in :sex, with: 'female'
+      fill_in :description, with: 'cool cool'
+      fill_in :status, with: 'adopted'
 
       click_button 'Update Pet'
 

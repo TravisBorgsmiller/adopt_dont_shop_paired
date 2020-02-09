@@ -54,13 +54,13 @@ RSpec.describe 'As a visitor', type: :feature do
       check :adopt_pets_
     end
 
-    fill_in 'Name', with: 'Jordan'
-    fill_in 'Address', with: '4231 Ponderosa Court'
-    fill_in 'City', with: 'Boulder'
-    fill_in 'State', with: 'CO'
-    fill_in 'Zip', with: '80301'
-    fill_in 'Phone', with: '323.940.3227'
-    fill_in 'Description', with: "I'm a puppy parent"
+    fill_in :name, with: 'Jordan'
+    fill_in :address, with: '4231 Ponderosa Court'
+    fill_in :city, with: 'Boulder'
+    fill_in :state, with: 'CO'
+    fill_in :zip, with: '80301'
+    fill_in :phone, with: '323.940.3227'
+    fill_in :description, with: "I'm a puppy parent"
     click_button 'Submit'
 
     expect(current_path).to eq('/favorites')

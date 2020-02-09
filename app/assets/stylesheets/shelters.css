@@ -38,9 +38,8 @@
 }
 
 .shelterActions {
-  display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: .75em;
+  margin-top: 1em;
 }
 
 .createShelter {
@@ -86,6 +85,17 @@
 }
 
 .reviewAttribute {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.reviewActions {
+  display: inline-block;
+  margin-top: 1em;
+  margin-left: .75em;
+  margin-right: .75em;
+}
+
+.shelterReviewBlock {
+  margin-bottom: 2em;
 }
