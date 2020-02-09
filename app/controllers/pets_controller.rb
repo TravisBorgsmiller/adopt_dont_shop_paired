@@ -17,8 +17,15 @@ class PetsController < ApplicationController
   def create
     shelter = Shelter.find(params[:shelter_id])
     pet = shelter.pets.create(pet_params)
-    redirect_to "/shelters/#{shelter.id}/pets"
+    if pet.save
+      flash[:success] = 'Pet created!'
+      redirect_to "/shelters/#{shelter.id}/pets"
+    else
+    flash[:error] = pet.errors.full_messages.to_sentence
+    redirect_to "/shelters/#{shelter.id}/pets/new"
   end
+end
+
 
   def edit
     @pet = Pet.find(params[:id])
@@ -27,8 +34,13 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:id])
     pet.update(pet_params)
-
-    redirect_to "/pets/#{pet.id}"
+    if pet.update(pet_params)
+      flash[:success] = 'Pet updated!'
+      redirect_to "/pets/#{pet.id}"
+    else
+      flash[:error] = pet.errors.full_messages.to_sentence
+      redirect_to "/pets/#{pet.id}/edit"
+    end
   end
 
   def destroy
@@ -52,7 +64,6 @@ class PetsController < ApplicationController
         :description,
         :age,
         :sex,
-        :status
-      )
-    end
+        :status)
+      end
 end
