@@ -17,48 +17,48 @@ RSpec.describe 'As a visitor', type: :feature do
                                    status: 'adoptable')
 
       visit "/"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/pets"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/pets/#{pet1.id}"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/pets/#{pet1.id}/edit"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/shelters"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/shelters/#{shelter1.id}"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
-      expect(current_path).to eq("/pets")
+      expect(page).to have_link("Available Pets")
+      click_link "Available Pets"
+      expect(current_path).to eq("/shelters/#{shelter1.id}/pets")
 
       visit "/shelters/#{shelter1.id}/pets"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/shelters/#{shelter1.id}/edit"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
 
       visit "/shelters/new"
-      expect(page).to have_link("Pets")
-      click_link "Pets"
+      expect(page).to have_link("All Pets")
+      click_link "All Pets"
       expect(current_path).to eq("/pets")
     end
   end
