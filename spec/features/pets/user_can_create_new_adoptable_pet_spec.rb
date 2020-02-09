@@ -16,11 +16,11 @@ RSpec.describe 'As a visitor', type: :feature do
 
       expect(current_path).to eq("/shelters/#{shelter3.id}/pets/new")
 
-      fill_in 'Image', with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
-      fill_in 'Name', with: 'Zeus'
-      fill_in 'Description', with: 'wild'
-      fill_in 'Age', with: '3'
-      fill_in 'Sex', with: 'male'
+      fill_in :image, with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
+      fill_in :name, with: 'Zeus'
+      fill_in :description, with: 'wild'
+      fill_in :age, with: '3'
+      fill_in :sex, with: 'male'
 
       click_button 'Create Pet'
 
