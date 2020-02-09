@@ -38,6 +38,9 @@ RSpec.describe 'As a visitor when a pet has an approved app' do
     click_link 'Applications'
     click_link 'Joe'
     click_link "Approve Application for #{@pet1.name}"
+    within("p#delete_#{@pet1.id}") do
+      expect { click_link 'Delete Pet' }.to change(Pet, :count).by(0)
+    end
     click_link 'Delete Pet'
     expect(page).to have_content("Pet can't be deleted, approved applications exist")
     expect(current_path).to eq("/pets/#{@pet1.id}")
