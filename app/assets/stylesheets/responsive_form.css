@@ -1,0 +1,62 @@
+.formTemplate {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(235, 235, 235, 0.5);
+  box-shadow: 0px 0px 10px 6px rgb(150, 150, 150);
+  border-radius: .5em;
+  color: rgb(46, 46, 46);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.25em;
+  align-content: center;
+  padding: 1em;
+  font-weight: bold;
+}
+
+.formTemplate > p {
+  font-weight: bold;
+}
+
+.formTemplate > h1 {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formTemplate > h3 {
+  font-weight: bold;
+  font-size: 1.5em;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.formField {
+  height: 1.5em;
+  width: 98%;
+  border-radius: .5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .4em;
+  font-size: 1em;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.formField:focus {
+  box-shadow: 0px 0px 10px 6px rgb(150, 150, 150);
+  outline-color: rgba(56, 56, 56, 0.062);
+}
+
+.formAlign {
+  /* text-align: left; */
+}
+
+.formPetImage {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
