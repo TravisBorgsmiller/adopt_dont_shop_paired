@@ -32,7 +32,6 @@ class SheltersController < ApplicationController
     elsif shelter.pets.find_by(status: 'pending')
       flash[:error] = 'Pets Pending for Adoption. Resolve Before Deleting.'
     else
-      shelter.pets.destroy_all
       Shelter.destroy(params[:id])
       flash[:success] = 'Shelter Removed.'
     end
