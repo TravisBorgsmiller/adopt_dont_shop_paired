@@ -51,13 +51,13 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(current_path).to eq('/applications/new')
       expect(page).to have_css("#pet_#{@pet1.id}")
       expect(page).to have_button('Submit')
-      expect(page).to have_field('Name')
-      expect(page).to have_field('Address')
-      expect(page).to have_field('City')
-      expect(page).to have_field('State')
-      expect(page).to have_field('Zip')
-      expect(page).to have_field('Phone')
-      expect(page).to have_field('Description')
+      expect(page).to have_field(:name)
+      expect(page).to have_field(:address)
+      expect(page).to have_field(:city)
+      expect(page).to have_field(:state)
+      expect(page).to have_field(:zip)
+      expect(page).to have_field(:phone)
+      expect(page).to have_field(:description)
       click_button('Submit')
 
       expect(page).to have_content('Application not submitted. Please complete the required fields.')
@@ -78,13 +78,13 @@ RSpec.describe 'As a visitor', type: :feature do
         check :adopt_pets_
       end
 
-      fill_in 'Name', with: 'Jordan'
-      fill_in 'Address', with: '4231 Ponderosa Court'
-      fill_in 'City', with: 'Boulder'
-      fill_in 'State', with: 'CO'
-      fill_in 'Zip', with: '80301'
-      fill_in 'Phone', with: '323.940.3227'
-      fill_in 'Description', with: "I'm a puppy parent"
+      fill_in :name, with: 'Jordan'
+      fill_in :address, with: '4231 Ponderosa Court'
+      fill_in :city, with: 'Boulder'
+      fill_in :state, with: 'CO'
+      fill_in :zip, with: '80301'
+      fill_in :phone, with: '323.940.3227'
+      fill_in :description, with: "I'm a puppy parent"
       click_button 'Submit'
 
       expect(page).to have_content('Application submitted, thank you!')
