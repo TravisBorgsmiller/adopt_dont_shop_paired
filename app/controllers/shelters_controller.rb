@@ -26,23 +26,17 @@ class SheltersController < ApplicationController
 
   def destroy
     shelter = Shelter.find(params[:id])
-
     if shelter.pets.empty?
-      flash[:success] = 'Shelter Removed.'
       Shelter.destroy(params[:id])
-      redirect_to '/shelters'
+      flash[:success] = 'Shelter Removed.'
+    elsif shelter.pets.find_by(status: 'pending')
+      flash[:error] = 'Pets Pending for Adoption. Resolve Before Deleting.'
+    else
+      shelter.pets.destroy_all
+      Shelter.destroy(params[:id])
+      flash[:success] = 'Shelter Removed.'
     end
-    shelter.pets.each do |pet|
-      if pet.status == 'pending'
-        flash[:error] = 'Pets Pending for Adoption. Resolve Before Deleting.'
-        redirect_to '/shelters'
-        break
-      else
-        flash[:success] = 'Shelter Removed.'
-        Shelter.destroy(params[:id])
-        redirect_to '/shelters'
-      end
-    end
+    redirect_to '/shelters'
   end
 
   def pets_index

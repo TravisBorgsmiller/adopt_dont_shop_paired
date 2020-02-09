@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Shelters with pets', type: :feature do
+RSpec.describe 'Shelters with no pending pets', type: :feature do
   before :each do
     @shelter1 = Shelter.create(
       name: "Mike's Shelter",
@@ -88,41 +88,20 @@ RSpec.describe 'Shelters with pets', type: :feature do
     click_link "Approve Application for #{@pet2.name}"
   end
 
-  describe "pending can't be deleted" do
-    it 'when I click delete' do
-      visit "/shelters"
+  describe 'can be removed' do
+    it 'and will remove all pets' do
+      visit '/shelters'
 
-      within("p#delete_#{@shelter1.id}") do
-        expect(page).to have_link('Delete')
-      end
-
-      within("p#delete_#{@shelter1.id}") do
-        click_link 'Delete'
-      end
-
-      expect(page).to have_content("Pets Pending for Adoption. Resolve Before Deleting.")
-    end
-  end
-
-  describe "not pending can be deleted" do
-    it 'when I click delete' do
-      visit "/shelters"
+      expect(current_path).to eq('/shelters')
+      expect(@shelter2.pets.first.name).to eq('Xylia')
 
       within("p#delete_#{@shelter2.id}") do
         click_link 'Delete'
       end
 
-      expect(current_path).to eq("/shelters")
-      expect(page).to have_content("Shelter Removed.")
-      expect(page).to_not have_content("Meg's Shelter")
+      expect(current_path).to eq('/shelters')
+      expect(page).to have_content('Shelter Removed.')
+      expect(page).to_not have_content(@shelter2.name)
     end
   end
 end
-
-# User Story 27, Shelters can be Deleted as long as all pets do not have approved applications on them
-
-# As a visitor
-# If a shelter doesn't have any pets with a pending status
-# I can delete that shelter
-# When that shelter is deleted
-# Then all of their pets are deleted as well
