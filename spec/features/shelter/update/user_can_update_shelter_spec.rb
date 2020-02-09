@@ -14,13 +14,13 @@ RSpec.describe 'As a vistor', type: :feature do
       click_link 'Update Shelter'
 
       visit "/shelters/#{shelter3.id}/edit"
-      fill_in 'Name', with: shelter3.name
-      fill_in 'Address', with: shelter3.address
-      fill_in 'City', with: 'Denver'
-      fill_in 'State', with: shelter3.state
-      fill_in 'Zip', with: shelter3.zip
+      fill_in :name, with: shelter3.name
+      fill_in :address, with: shelter3.address
+      fill_in :city, with: 'Denver'
+      fill_in :state, with: shelter3.state
+      fill_in :zip, with: shelter3.zip
 
-      click_button 'Save'
+      click_button 'Update Shelter'
 
       expect(current_path).to eq("/shelters/#{shelter3.id}")
 
