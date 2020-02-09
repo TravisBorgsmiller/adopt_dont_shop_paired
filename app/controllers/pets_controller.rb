@@ -21,10 +21,10 @@ class PetsController < ApplicationController
       flash[:success] = 'Pet created!'
       redirect_to "/shelters/#{shelter.id}/pets"
     else
-    flash[:error] = pet.errors.full_messages.to_sentence
-    redirect_to "/shelters/#{shelter.id}/pets/new"
+      flash[:error] = pet.errors.full_messages.to_sentence
+      redirect_to "/shelters/#{shelter.id}/pets/new"
+    end
   end
-end
 
 
   def edit
