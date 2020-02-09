@@ -18,14 +18,14 @@ RSpec.describe 'When I delete a Shelter', type: :feature do
       zip: '17033'
     )
 
-    @shelter1.reviews.create(
+    @review1 = @shelter1.reviews.create(
       title: "A glowing review",
       rating: "5",
       content: "Great facility, friendly staff!",
       image: "https://i.imgur.com/dciDr8Q.jpg"
     )
 
-    @shelter2.reviews.create(
+    @review2 = @shelter2.reviews.create(
       title: "A stellar review",
       rating: "5",
       content: "They throw a frisbee with my dog",
@@ -34,19 +34,20 @@ RSpec.describe 'When I delete a Shelter', type: :feature do
   end
 
   it 'it deletes the reviews for that shelter' do
-
     visit '/shelters'
 
     within("p#delete_#{@shelter2.id}") do
-      click_link 'Delete'
+      expect { click_link 'Delete' }.to change(Shelter && Review, :count).by(-1)
     end
 
     expect(page).to have_content("Shelter Removed.")
+    expect(current_path).to eq('/shelters')
 
     within("p#delete_#{@shelter1.id}") do
-      click_link 'Delete'
+      expect { click_link 'Delete' }.to change(Shelter && Review, :count).by(-1)
     end
 
+    expect(current_path).to eq('/shelters')
     expect(page).to have_content("Shelter Removed.")
     expect(page).to_not have_content("Meg's Shelter")
     expect(page).to_not have_content("Mike's Shelter")
