@@ -46,8 +46,8 @@ RSpec.describe 'As a visitor I can create a new shelter review' do
    expect(page).to have_content('Review not created. Please complete required fields.')
    expect(page).to have_button('Submit')
 
-   fill_in 'title', with: 'This place is remarkable!'
-   fill_in 'content', with: 'Friendly attendants.'
+   fill_in :title, with: 'This place is remarkable!'
+   fill_in :content, with: 'Friendly attendants.'
 
    click_button('Submit')
 
