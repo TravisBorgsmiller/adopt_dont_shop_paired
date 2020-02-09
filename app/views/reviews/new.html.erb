@@ -1,13 +1,26 @@
-<h1>Add Review</h1>
-
-<%= form_tag("/shelters/#{@shelter.id}/reviews", method: :post) do %>
-  <%= label_tag "Title:" %>
-  <%= text_field_tag :title %><br>
-  <%= label_tag "Rating:" %>
-  <%= select_tag :rating, options_for_select([5,4,3,2,1]), prompt: '-' %><br>
-  <%= label_tag "Content:" %>
-  <%= text_field_tag :content %><br>
-  <%= label_tag "Image (optional): " %>
-  <%= text_field_tag :image  %><br>
-  <%= submit_tag 'Submit' %>
-<% end %>
+<div class="formTemplate">
+  <h3><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %> | Add Review</h3>
+  <div class="effect2"><%= image_tag 'https://i.imgur.com/Y4SC3En.jpg' %></div>
+  <div class="formAlign">
+    <%= form_tag "/shelters/#{@shelter.id}/reviews", method: :post do %>
+      <div>
+        <p>Title:</p>
+        <%= text_field_tag :title, nil, placeholder: 'Review Title', class: "formField" %>
+      </div>
+      <div>
+        <p>Rating:</p>
+        <%= select_tag :rating, options_for_select([5,4,3,2,1]), prompt: '-' %>
+      </div>
+      <div>
+        <p>Content:</p>
+        <%= text_field_tag :content, nil, placeholder: 'How was your experience?', class: "formField" %>
+      </div>
+      <div>
+        <p>Image:</p>
+        <%= text_field_tag :image, nil, placeholder: 'Would you like to include an optional image with your review?', class: "formField" %>
+      </div>
+      <%= submit_tag 'Submit', class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
