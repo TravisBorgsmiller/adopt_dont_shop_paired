@@ -88,7 +88,7 @@ RSpec.describe 'Shelters with pets', type: :feature do
     click_link "Approve Application for #{@pet2.name}"
   end
 
-  describe "pending can't be deleted" do
+  describe "pending adoption can't be deleted" do
     it 'when I click delete' do
       visit '/shelters'
 
@@ -100,9 +100,9 @@ RSpec.describe 'Shelters with pets', type: :feature do
     end
   end
 
-  describe "not pending can be deleted" do
+  describe "not pending adoption can be deleted" do
     it 'when I click delete' do
-      visit "/shelters"
+      visit '/shelters'
 
       within("p#delete_#{@shelter2.id}") do
         expect { click_link 'Delete' }.to change(Shelter && Pet, :count).by(-1)
