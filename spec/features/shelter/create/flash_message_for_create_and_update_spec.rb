@@ -20,7 +20,7 @@ RSpec.describe 'When I create or update a shelter', type: :feature do
                               zip: '80301')
   end
 
-  describe 'and create is successful' do
+  describe 'and create is not successful' do
     it 'it displays a success flash message' do
       click_button('Create Shelter')
 
@@ -29,7 +29,7 @@ RSpec.describe 'When I create or update a shelter', type: :feature do
     end
   end
 
-  describe 'and create is not successful' do
+  describe 'and create is successful' do
     it 'it displays an error flash message' do
       fill_in(:city, with: 'Boulder')
       click_button('Create Shelter')
