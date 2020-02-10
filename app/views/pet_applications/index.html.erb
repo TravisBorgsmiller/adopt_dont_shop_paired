@@ -1,8 +1,8 @@
-<div class="petsApplicationsIndexBlock">
+<div class="petApplicationsBlock">
   <% if @pet.applications.empty? == false %>
-  <div id="petsApplicationsActive">
+  <div class="petApplicationsElement">
     <% @pet.applications.each do |application| %>
-      <%= link_to application.name, "/applications/#{application.id}" %>
+      <p><%= link_to application.name, "/applications/#{application.id}" %></p>
   </div>
   <% end %>
   <% else %>
@@ -10,4 +10,4 @@
     <h1>No Applications for this Pet</h1>
   </div>
   <% end %>
-</div>
+<div>
