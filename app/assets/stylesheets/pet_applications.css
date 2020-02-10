@@ -1,0 +1,31 @@
+.petsApplicationsIndexBlock {
+  margin-left: auto;
+  margin-right: auto;
+  border-color: blue;
+  border-style: solid;
+}
+
+.petApplicationsBlock {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(235, 235, 235, 0.918);
+  box-shadow: 0px 0px 4px 3px rgb(221, 221, 221);
+  border-radius: 1em;
+  font-size: 1.25em;
+}
+
+.petApplicationsElement {
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25em;
+  font-size: .8em;
+}
+
+.nopetApplicationsElement {
+  margin-left: auto;
+  margin-right: auto;
+  padding: .25em;
+  font-size: .8em;
+}
