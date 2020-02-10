@@ -12,9 +12,15 @@ RSpec.describe 'When I create or update a shelter', type: :feature do
     fill_in(:city, with: '')
     fill_in(:state, with: 'CO')
     fill_in(:zip, with: 'Zip')
+
+    @shelter1 = Shelter.create(name: 'Zeus\'s Puppy Pals',
+                              address: '3734 Cedar Court',
+                              city: 'Boulder',
+                              state: 'CO',
+                              zip: '80301')
   end
 
-  describe 'and it is successful' do
+  describe 'and create is successful' do
     it 'it displays a success flash message' do
       click_button('Create Shelter')
 
@@ -23,13 +29,35 @@ RSpec.describe 'When I create or update a shelter', type: :feature do
     end
   end
 
-  describe 'and it is not successful' do
+  describe 'and create is not successful' do
     it 'it displays an error flash message' do
       fill_in(:city, with: 'Boulder')
       click_button('Create Shelter')
 
       expect(page).to have_content('Shelter successfully created')
       expect(current_path).to eq('/shelters')
+    end
+  end
+
+  describe 'and update is not successful' do
+    it 'it displays an error flash message' do
+      visit "/shelters/#{@shelter1.id}/edit"
+      fill_in(:city, with: '')
+      click_button('Update Shelter')
+
+      expect(page).to have_content("City can't be blank")
+      expect(current_path).to eq("/shelters/#{@shelter1.id}")
+    end
+  end
+
+  describe 'and update is successful' do
+    it 'it displays an error flash message' do
+      visit "/shelters/#{@shelter1.id}/edit"
+      fill_in(:city, with: 'Boulder')
+      click_button('Update Shelter')
+
+      expect(page).to have_content('Shelter successfully updated')
+      expect(current_path).to eq("/shelters/#{@shelter1.id}")
     end
   end
 end
