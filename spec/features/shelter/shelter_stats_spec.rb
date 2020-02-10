@@ -61,7 +61,7 @@ RSpec.describe 'When I visit a shelter show page', type: :feature do
       check :adopt_pets_
     end
 
-    fill_in :name, with: 'Jordan'
+    fill_in :name, with: 'Jordan Williams'
     fill_in :address, with: '4231 Ponderosa Court'
     fill_in :city, with: 'Boulder'
     fill_in :state, with: 'CO'
@@ -70,12 +70,18 @@ RSpec.describe 'When I visit a shelter show page', type: :feature do
     fill_in :description, with: "I'm a puppy parent"
     click_button 'Submit'
 
-    expect(current_path).to eq('/favorites')
+    expect(page).to have_content('Application submitted, thank you!')
+
+    @application = Application.last
   end
 
   describe 'the shelter statistics are listed:' do
     it 'count of pets at shelter' do
+      visit "/shelters/#{@shelter1.id}"
 
+      expect(page).to have_content(@shelter1.pet_count.to_s)
+      expect(page).to have_content(@shelter1.average_rating)
+      expect(page).to have_content(@shelter1.applications_count)
     end
   end
 end
