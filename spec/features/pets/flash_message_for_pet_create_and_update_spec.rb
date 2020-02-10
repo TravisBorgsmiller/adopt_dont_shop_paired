@@ -15,26 +15,25 @@ RSpec.describe 'As a visitor when I create or update a pet with incomplete info'
       age: 3,
       sex: 'male')
 
-
     visit "/shelters/#{shelter3.id}/pets"
 
     click_link 'Create Pet'
 
     expect(current_path).to eq("/shelters/#{shelter3.id}/pets/new")
 
-    fill_in 'Image', with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
-    fill_in 'Name', with: 'Zeus'
-    fill_in 'Description', with: 'wild'
-    fill_in 'Age', with: ''
-    fill_in 'Sex', with: 'male'
+    fill_in :image, with: 'https://image.shutterstock.com/image-photo/brindled-plott-hound-puppy-on-600w-79691980.jpg'
+    fill_in :name, with: 'Zeus'
+    fill_in :description, with: 'wild'
+    fill_in :age, with: ''
+    fill_in :sex, with: 'male'
     click_button 'Create Pet'
     expect(page).to have_content("Age can't be blank")
     expect(page).to have_button('Create Pet')
 
     visit "/pets/#{buster.id}"
     click_link 'Update Pet'
-    fill_in 'Sex', with: ''
-    fill_in 'Description', with: ''
+    fill_in :sex, with: ''
+    fill_in :description, with: ''
     click_button 'Update Pet'
     expect(page).to have_content("Sex can't be blank and Description can't be blank")
     expect(page).to have_button('Update Pet')
