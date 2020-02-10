@@ -8,6 +8,11 @@
       <div class="shelterInfoAttribute">State: <%= @shelter.state %></div>
       <div class="shelterInfoAttribute">Zip: <%= @shelter.zip %></div>
       <div class="shadowSpacer"></div>
+      <div class="shelterStatsBlock">
+        <p>Total Pets: <%= @shelter.pet_count %></p>
+        <p>Review Average: <%= @shelter.average_rating %></p>
+        <p>Applications Count: <%= @shelter.applications_count %></p>
+      </div>
       <div class="shelterActionsBlock">
         <div class="shelterActions"><%= link_to 'Available Pets', "/shelters/#{@shelter.id}/pets" %></div>
         <div class="shelterActions"><%= link_to 'Update Shelter', "/shelters/#{@shelter.id}/edit" %></div>
