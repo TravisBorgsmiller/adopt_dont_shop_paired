@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-
+Application.destroy_all
 Shelter.destroy_all
-
+Review.destroy_all
 Pet.destroy_all
 
 shelter1 = Shelter.create(
