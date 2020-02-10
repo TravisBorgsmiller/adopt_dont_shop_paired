@@ -11,8 +11,10 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    application = Application.create(application_params)
-    if application.save
+    if params[:adopt_pets].nil?
+      flash[:error] = 'Please select a pet(s) to adopt'
+      redirect_to '/applications/new'
+    elsif application = Application.create(application_params)
       pets = Pet.find(params[:adopt_pets])
       pet_ids = params[:adopt_pets]
       application.pets << pets
