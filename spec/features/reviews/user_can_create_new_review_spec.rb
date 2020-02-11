@@ -26,32 +26,27 @@ RSpec.describe 'As a visitor I can create a new shelter review' do
 
     click_link "Create new review for #{@shelter1.name}"
     expect(current_path).to eq("/shelters/#{@shelter1.id}/reviews/new")
-
     fill_in :title, with: 'Bomb Review'
     select '5', from: :rating
     fill_in :content, with: 'Fabulous facilities'
-    fill_in :image, with: ''
     click_button 'Submit'
-
+    expect(page).to have_content('Review Created!')
     expect(current_path).to eq("/shelters/#{@shelter1.id}")
     expect(page).to have_content('Bomb Review')
     expect(page).to have_content('Fabulous facilities')
   end
+
   it "does not allow a user to create a review without required information" do
 
-   visit "/shelters/#{@shelter1.id}/reviews/new"
+    visit "/shelters/#{@shelter1.id}"
+    click_link "Create new review for #{@shelter1.name}"
 
-   click_button('Submit')
+    fill_in :title, with: 'This place is remarkable!'
+    fill_in :content, with: 'Friendly attendants.'
 
-   expect(page).to have_content('Review not created. Please complete required fields.')
-   expect(page).to have_button('Submit')
+    click_button('Submit')
 
-   fill_in :title, with: 'This place is remarkable!'
-   fill_in :content, with: 'Friendly attendants.'
-
-   click_button('Submit')
-
-   expect(page).to have_content('Review not created. Please complete required fields.')
-   expect(page).to have_button('Submit')
- end
+    expect(page).to have_content("Rating can't be blank")
+    expect(page).to have_button('Submit')
+  end
 end

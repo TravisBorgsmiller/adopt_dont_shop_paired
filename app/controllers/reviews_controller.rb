@@ -5,13 +5,15 @@ class ReviewsController < ApplicationController
 
   def create
     @shelter = Shelter.find(params[:id])
-    review = @shelter.reviews.create(review_params)
+    review = @shelter.reviews.new(review_params)
     if review.save
-      flash[:success] = 'Review created!'
+      binding.pry
+      flash[:success] = 'Review Created!'
       redirect_to "/shelters/#{@shelter.id}"
     else
-      flash.now[:error] = 'Review not created. Please complete required fields.'
-      render :new
+      binding.pry
+      flash.now[:error] = review.errors.full_messages.to_sentence
+      redirect_to "/shelters/#{@shelter.id}"
     end
   end
 

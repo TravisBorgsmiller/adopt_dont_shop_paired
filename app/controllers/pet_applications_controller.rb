@@ -9,7 +9,7 @@ class PetApplicationsController < ApplicationController
     if pet.status == 'pending'
       pet.update(status: 'adoptable')
       app.update(pending: 'false')
-      redirect_to "/applications/#{app.id}"
+      redirect_to "/applications/#{app.application_id}"
     else
       pet.update(status: 'pending')
       app.update(pending: 'true')
