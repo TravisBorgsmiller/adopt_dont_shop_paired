@@ -6,4 +6,8 @@ class Application < ApplicationRecord
   def self.find_fav_pets(favorites)
     Pet.find(favorites.keys)
   end
+
+  def revoke_application(pet)
+    PetApplication.find_by(application_id: id, pet_id: pet.id, pending: true)
+  end
 end

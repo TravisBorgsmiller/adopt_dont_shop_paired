@@ -43,16 +43,20 @@ RSpec.describe 'As a visitor when an app for a pet is approved' do
 
     visit "/pets/#{@pet2.id}"
     click_button 'Favorite'
+
+
   end
   it 'can unapprove a pet application' do
     visit "/applications/#{@app.id}"
     click_link "Approve Application for #{@pet1.name}"
-    visit "/pets/#{@pet1.id}"
+    expect(current_path).to eq("/pets/#{@pet1.id}")
     expect(page).to have_content("Holding for: Joe")
+
     visit "/applications/#{@app.id}"
     click_link "Unapprove Application for #{@pet1.name}"
     expect(current_path).to eq("/applications/#{@app.id}")
     expect(page).to have_link("Approve Application for #{@pet1.name}")
+
     visit "/pets/#{@pet1.id}"
     expect(page).to have_content('adoptable')
     expect(page).not_to have_content('Holding for: Joe')

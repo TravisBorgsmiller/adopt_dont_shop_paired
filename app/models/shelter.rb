@@ -19,14 +19,6 @@ class Shelter < ApplicationRecord
   end
 
   def applications_count
-    apps = []
-    pets.each do |pet|
-      if pet.applications.empty?
-        next
-      else
-        apps << pet.applications
-      end
-    end
-    apps.size
+    pets.joins(:pet_applications).count
   end
 end

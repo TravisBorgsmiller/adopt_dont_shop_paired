@@ -1,18 +1,18 @@
 class Pet < ApplicationRecord
   validates_presence_of :name,
-                        :image,
                         :age,
                         :sex,
                         :shelter_id,
                         :status,
-                        :description
+                        :description,
+                        :image
   belongs_to :shelter
   has_many :pet_applications
   has_many :applications, through: :pet_applications
   attribute :status, :string, default: 'adoptable'
 
   def pending_for
-    pet_app = pet_applications
-    Application.find(pet_app.first[:application_id]).name
+    pet_app = PetApplication.find_by(pet_id: id, pending: true)
+    pet_app.application.name
   end
 end

@@ -12,7 +12,10 @@ class ApplicationsController < ApplicationController
 
   def create
     application = Application.create(application_params)
-    if application.save
+    if params[:adopt_pets].nil?
+      flash[:error] = 'Application not submitted. Please complete the required fields.'
+      redirect_to '/applications/new'
+    elsif application.save
       pets = Pet.find(params[:adopt_pets])
       pet_ids = params[:adopt_pets]
       application.pets << pets
@@ -35,7 +38,8 @@ class ApplicationsController < ApplicationController
         :state,
         :zip,
         :phone,
-        :description
+        :description,
+        :id
       )
     end
 end

@@ -5,13 +5,14 @@ class ReviewsController < ApplicationController
 
   def create
     @shelter = Shelter.find(params[:id])
-    review = @shelter.reviews.create(review_params)
+    params.delete :image if params[:image].blank?
+    review = @shelter.reviews.new(review_params)
     if review.save
-      flash[:success] = 'Review created!'
+      flash[:success] = 'Review Created!'
       redirect_to "/shelters/#{@shelter.id}"
     else
-      flash.now[:error] = 'Review not created. Please complete required fields.'
-      render :new
+      flash[:error] = review.errors.full_messages.to_sentence
+      redirect_to "/shelters/#{@shelter.id}/reviews/new"
     end
   end
 
@@ -21,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-
+    params.delete :image if params[:image].blank?
     if @review.update(review_params)
       flash[:success] = 'Review updated!'
       redirect_to "/shelters/#{@review.shelter_id}"

@@ -22,7 +22,7 @@
 <div class="petsWithApplications">
   <% if  @pet_apps.empty? == false %>
     <h1>Pets with pending adoption applications:</h1>
-    <% @pet_apps.each do |pet|  %>
+    <% @pet_apps.uniq.each do |pet|  %>
       <div id="pet_<%= pet.id %>">
         <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
       </div>
