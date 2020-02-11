@@ -18,7 +18,7 @@
       <div><%= pet.image %></div>
       <% if pet.status == 'adoptable' %>
         <div><%= link_to "Approve Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
-      <% else %>
+      <% elsif @application.revoke_application(pet).nil? == false %>
         <div><%= link_to "Unapprove Application for #{pet.name}", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %></div>
       <% end %>
     <% end %>
