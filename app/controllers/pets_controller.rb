@@ -16,6 +16,7 @@ class PetsController < ApplicationController
 
   def create
     shelter = Shelter.find(params[:shelter_id])
+    params.delete :image if params[:image].blank?
     pet = shelter.pets.create(pet_params)
     if pet.save
       flash[:success] = 'Pet created!'
@@ -33,6 +34,7 @@ class PetsController < ApplicationController
 
   def update
     pet = Pet.find(params[:id])
+    params.delete :image if params[:image].blank?
     pet.update(pet_params)
     if pet.update(pet_params)
       flash[:success] = 'Pet updated!'

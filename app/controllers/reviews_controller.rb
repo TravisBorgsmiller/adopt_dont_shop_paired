@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     @shelter = Shelter.find(params[:id])
+    params.delete :image if params[:image].blank?
     review = @shelter.reviews.new(review_params)
     if review.save
       flash[:success] = 'Review Created!'
@@ -21,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-
+    params.delete :image if params[:image].blank?
     if @review.update(review_params)
       flash[:success] = 'Review updated!'
       redirect_to "/shelters/#{@review.shelter_id}"
