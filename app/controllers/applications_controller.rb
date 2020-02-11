@@ -38,7 +38,8 @@ class ApplicationsController < ApplicationController
         :state,
         :zip,
         :phone,
-        :description
+        :description,
+        :id
       )
     end
 end
