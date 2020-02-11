@@ -81,7 +81,7 @@ RSpec.describe 'When I visit a shelter show page', type: :feature do
 
       expect(page).to have_content(@shelter1.pet_count.to_s)
       expect(page).to have_content(@shelter1.average_rating)
-      expect(page).to have_content(@shelter1.pet_applications)
+      expect(page).to have_content(@shelter1.applications_count)
     end
   end
 end
