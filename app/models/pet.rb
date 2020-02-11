@@ -11,7 +11,7 @@ class Pet < ApplicationRecord
   attribute :status, :string, default: 'adoptable'
 
   def pending_for
-    pet_app = pet_applications
-    Application.find(pet_app.first[:application_id]).name
+    pet_app = PetApplication.find_by(pet_id: id, pending: true)
+    pet_app.application.name
   end
 end

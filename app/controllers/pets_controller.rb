@@ -64,6 +64,7 @@ class PetsController < ApplicationController
         :description,
         :age,
         :sex,
-        :status)
-      end
+        :status,
+        :id)
+    end
 end
