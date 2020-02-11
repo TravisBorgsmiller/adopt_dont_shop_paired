@@ -4,13 +4,15 @@ class PetApplicationsController < ApplicationController
   end
 
   def update
-    app = Application.find(params[:application_id])
+    app = PetApplication.find_by(application_id: params[:application_id])
     pet = Pet.find(params[:pet_id])
     if pet.status == 'pending'
       pet.update(status: 'adoptable')
+      app.update(pending: 'false')
       redirect_to "/applications/#{app.id}"
     else
       pet.update(status: 'pending')
+      app.update(pending: 'true')
       redirect_to "/pets/#{pet.id}"
     end
   end
