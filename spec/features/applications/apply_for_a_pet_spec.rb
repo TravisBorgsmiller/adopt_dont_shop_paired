@@ -43,7 +43,7 @@ RSpec.describe 'As a visitor', type: :feature do
       click_button 'Favorite'
     end
 
-    it 'I click on link to adopt pets' do
+    it 'I submit a form without selecting any pets' do
       visit '/favorites'
 
       click_link 'Adopt Pet(s)'
@@ -58,6 +58,28 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_field(:zip)
       expect(page).to have_field(:phone)
       expect(page).to have_field(:description)
+      click_button('Submit')
+
+      expect(page).to have_content('Application not submitted. Please complete the required fields.')
+      expect(current_path).to eq('/applications/new')
+    end
+
+    it 'I submit a form selecting pets, but leaving a field blank' do
+      visit '/favorites'
+
+      click_link 'Adopt Pet(s)'
+
+      within("div#pet_#{@pet1.id}") do
+        check :adopt_pets_
+      end
+
+      within("div#pet_#{@pet2.id}") do
+        check :adopt_pets_
+      end
+
+      fill_in :name, with: 'Jordan'
+      fill_in :address, with: '4231 Ponderosa Court'
+
       click_button('Submit')
 
       expect(page).to have_content('Application not submitted. Please complete the required fields.')
