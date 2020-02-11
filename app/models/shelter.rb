@@ -19,9 +19,6 @@ class Shelter < ApplicationRecord
   end
 
   def applications_count
-    apps = pets.map do |pet|
-      pet.applications
-    end
-    apps.size
+    pets.joins(:pet_applications).count
   end
 end
