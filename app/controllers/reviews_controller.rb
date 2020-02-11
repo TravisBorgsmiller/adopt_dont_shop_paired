@@ -7,13 +7,11 @@ class ReviewsController < ApplicationController
     @shelter = Shelter.find(params[:id])
     review = @shelter.reviews.new(review_params)
     if review.save
-      binding.pry
       flash[:success] = 'Review Created!'
       redirect_to "/shelters/#{@shelter.id}"
     else
-      binding.pry
-      flash.now[:error] = review.errors.full_messages.to_sentence
-      redirect_to "/shelters/#{@shelter.id}"
+      flash[:error] = review.errors.full_messages.to_sentence
+      redirect_to "/shelters/#{@shelter.id}/reviews/new"
     end
   end
 
