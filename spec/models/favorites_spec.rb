@@ -57,4 +57,5 @@ RSpec.describe Favorite do
       expect(favorites.contents.count).to eq(0)
     end
   end
+  
 end
