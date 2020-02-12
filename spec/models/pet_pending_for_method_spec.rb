@@ -63,6 +63,7 @@ RSpec.describe Pet, type: :model do
       visit "/applications/#{@application.id}"
       click_link "Approve Application for #{@pet1.name}"
       expect(current_path).to eq("/pets/#{@pet1.id}")
+      @pet1.reload
       expect(@pet1.pending_for_name).to eq('Jordan')
     end
   end
