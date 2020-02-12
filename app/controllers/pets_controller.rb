@@ -51,6 +51,8 @@ class PetsController < ApplicationController
       flash[:error] = "Pet can't be deleted, approved applications exist"
       redirect_to "/pets/#{pet.id}"
     else
+      apps = PetApplication.where(pet_id: params[:id])
+      PetApplication.destroy(apps.ids)
       Pet.destroy(params[:id])
       @favorites.remove_pet(pet.id)
       redirect_to '/pets'
