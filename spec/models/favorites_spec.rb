@@ -22,7 +22,40 @@ RSpec.describe Favorite do
   describe "initialize" do
     it "can initialize favorite pets" do
       favorites = Favorite.new({})
-      expect(favorites.contents.count). to eq(0)
+      expect(favorites.contents.count).to eq(0)
     end
   end
+  describe "remove_pet" do
+    it "can remove a single pet from favorites" do
+      favorites = Favorite.new({
+      "1" => 1,
+      "2" => 1,
+      "3" => 1
+      })
+      favorites.remove_pet('1')
+      expect(favorites.contents.count).to eq(2)
+    end
+  end
+  describe "delete_favorites" do
+    it "can remove a single pet from favorites" do
+      favorites = Favorite.new({
+      "1" => 1,
+      "2" => 1,
+      "3" => 1
+      })
+      favorites.delete_favorites(['1','2'])
+      expect(favorites.contents.count).to eq(1)
+    end
+  end
+  describe "remove_all" do
+    it "can delete all favorites" do
+      favorites = Favorite.new({
+        "1" => 1,
+        "2" => 1
+        })
+      favorites.remove_all
+      expect(favorites.contents.count).to eq(0)
+    end
+  end
+  
 end

@@ -22,7 +22,7 @@
     <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
   </div>
   <div class="petsActions">
-    <p id=<%= "delete_#{@pet.id}" %>><%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+    <p id=<%= "delete_#{@pet.id}" %>><%= link_to 'Delete Pet', "/shelters/#{@shelter.id}/pets/#{@pet.id}", method: :delete %></p>
   </div>
   <div>
     <%= link_to 'Applications', "/pets/#{@pet.id}/applications" %>
