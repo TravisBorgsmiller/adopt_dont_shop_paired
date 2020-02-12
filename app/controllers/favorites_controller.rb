@@ -30,7 +30,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite.remove_all
+    favorite.delete_favorites
     flash[:notice] = "Your favorited pets have been removed"
     redirect_to "/favorites"
     session[:favorites] = favorite.contents
