@@ -20,14 +20,26 @@
 </div>
 
 <div class="petsWithApplications">
-  <% if  @pet_apps.empty? == false %>
+  <% if @pet_apps.empty? == false %>
     <h1>Pets with pending adoption applications:</h1>
     <% @pet_apps.uniq.each do |pet|  %>
+    <% if pet.pending_for == 'none' && pet.status == 'adoptable' %>
       <div id="pet_<%= pet.id %>">
         <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
       </div>
+      <% end %>
     <% end %>
-  <% else %>
+    <h1>Pets with approved adoption applications:</h1>
+    <section id="approved_adoption">
+      <% @pet_apps.uniq.each do |pet|  %>
+        <% if pet.pending_for != 'none' && pet.status == 'pending' %>
+        <div id="pet_<%= pet.id %>">
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+        </div>
+        <% end %>
+      <% end %>
+    </section>
+  <% else @pet_apps.empty? == true %>
     <h2>No pet applications submitted</h2>
   <% end %>
 </div>
