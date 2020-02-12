@@ -33,5 +33,4 @@ Rails.application.routes.draw do
   get '/pets/:id/edit', to: 'pets#edit'
   patch '/pets/:id', to: 'pets#update'
   delete '/pets/:id', to: 'pets#destroy'
-  delete '/shelters/:id/pets/:id', to: 'pets#destroy'
 end
