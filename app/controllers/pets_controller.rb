@@ -55,6 +55,7 @@ class PetsController < ApplicationController
       PetApplication.destroy(apps.ids)
       Pet.destroy(params[:id])
       @favorites.remove_pet(pet.id)
+      session[:favorites] = @favorites.contents
       redirect_to '/pets'
     end
   end
