@@ -19,7 +19,7 @@ class ApplicationsController < ApplicationController
       pets = Pet.find(params[:adopt_pets])
       pet_ids = params[:adopt_pets]
       application.pets << pets
-      @favorites.delete_favorites(pet_ids)
+      @favorites.delete_favorites
       flash[:success] = 'Application submitted, thank you!'
       redirect_to '/favorites'
     else
