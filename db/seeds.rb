@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Shelter.destroy_all
-
 Pet.destroy_all
 
 shelter1 = Shelter.create(
