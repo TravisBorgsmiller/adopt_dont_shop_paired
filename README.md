@@ -1,6 +1,39 @@
 # Adopt Don't Shop Paired Project
 BE Mod 2 Week 2/3 Pair Project
 
+## Introduction
+
+Adopt Don't Shop is a basic, Rails e-commerce application. Assigned as a paired project during Mod 2 of 4, we worked across a period of ten days to implement basics including CRUD functionality, cart functionality, and statistics for multiple aspects of the site.
+
+View Adopt Don't Shop from heroku [here](https://enigmatic-temple-15344.herokuapp.com/).
+
+
+## Implementation Instructions
+
+To implement Adopt Don't Shop locally, run the following commands:
+
+<code>git clone git@github.com:TravisBorgsmiller/adopt_dont_shop_paired.git</code>
+
+<code>cd adopt_dont_shop_paired/</code>
+
+<code>bundle install</code>
+
+<code>bundle update</code>
+
+<code>rails db:{drop,create,migrate,seed}</code>
+
+Create a new [heroku](https://id.heroku.com/login) app and connect to your local monster shop repository with:
+
+<code>heroku git:remote -a your_heroku_app_name</code>
+
+Deploy Adopt Don't Shop from heroku.
+
+
+## Contributors
+
+[Travis Borgsmiller](https://github.com/TravisBorgsmiller)
+[Jordan Williams] (https://github.com/iEv0lv3)
+
 ## Background and Description
 
 "Adopt Don't Shop Paired" is a fictitious pet adoption platform where visitors can favorite pets and apply to adopt their newest furry friend.
