@@ -21,4 +21,5 @@ class Pet < ApplicationRecord
     app = Application.find(pending_for)
     app.id
   end
+
 end

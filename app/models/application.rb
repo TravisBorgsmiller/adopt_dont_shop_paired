@@ -7,7 +7,4 @@ class Application < ApplicationRecord
     Pet.find(favorites.keys)
   end
 
-  def revoke_application
-    Pet.joins(:applications).where(pending_for: id).uniq
-  end
 end
