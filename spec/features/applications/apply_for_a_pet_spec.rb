@@ -112,9 +112,12 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content('Application submitted, thank you!')
       expect(current_path).to eq('/favorites')
 
-      within("div.favoritePetsBlock") do
-        expect(page).to_not have_content('Athena')
-        expect(page).to_not have_content('Odell')
+      within("div.petsWithApplications") do
+        expect(page).to have_link(@pet1.name)
+      end
+
+      within("div.petsWithApplications") do
+        expect(page).to have_link(@pet2.name)
       end
     end
   end
