@@ -56,7 +56,6 @@ RSpec.describe 'As a visitor when I visit the favorites index page' do
 
 it 'shows pets with pending applications' do
   visit '/favorites'
-  save_and_open_page
     within('section#approved_adoption') do
       expect(page).to have_content(@pet1.name)
     end
