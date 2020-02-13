@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   def index
     @pet_apps = Pet.joins(:pet_applications).where(status: 'adoptable').uniq
+    @approved_apps = Pet.joins(:pet_applications).where(status: 'pending').uniq
     pet_ids = @favorites.contents.keys
     @pets = pet_ids.reduce([]) do |value, key|
       value << Pet.find(key.to_i)
