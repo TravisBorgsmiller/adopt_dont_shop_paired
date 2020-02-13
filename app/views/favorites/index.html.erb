@@ -31,7 +31,7 @@
     <% end %>
     <h1>Pets with approved adoption applications:</h1>
     <section id="approved_adoption">
-      <% @pet_apps.uniq.each do |pet|  %>
+      <% @approved_apps.each do |pet|  %>
         <% if pet.pending_for != 'none' && pet.status == 'pending' %>
         <div id="pet_<%= pet.id %>">
         <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
