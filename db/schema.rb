@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200212042253) do
+ActiveRecord::Schema.define(version: 20200213045605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,8 +67,4 @@ ActiveRecord::Schema.define(version: 20200212042253) do
     t.string "zip"
   end
 
-  add_foreign_key "pet_applications", "applications"
-  add_foreign_key "pet_applications", "pets"
-  add_foreign_key "pets", "shelters"
-  add_foreign_key "reviews", "shelters"
 end
