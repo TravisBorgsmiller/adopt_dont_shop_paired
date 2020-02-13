@@ -7,6 +7,7 @@ class Pet < ApplicationRecord
                         :pending_for,
                         :description,
                         :image
+  validates :image, format: URI::regexp(%w[http https])
   belongs_to :shelter
   has_many :pet_applications
   has_many :applications, through: :pet_applications
